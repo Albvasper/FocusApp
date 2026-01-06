@@ -1,17 +1,8 @@
 using UnityEngine;
 using System.Collections;
-using Unity.VisualScripting;
-
-/*
-    - User sets a timer (Intervals of 5)
-    - Starts session
-    - Start timer and decrese time overtime
-    - Every 5 min the user generates something
-    - End of session the user gets the item
-*/
 
 /// <summary>
-/// 
+/// Stores focus time goal and elapsed time.
 /// </summary>
 public class TimeManager : MonoBehaviour
 {
@@ -35,6 +26,11 @@ public class TimeManager : MonoBehaviour
         StartCoroutine(Timer());
     }
 
+    public void RestartTimer()
+    {
+        StopAllCoroutines();
+    }
+
     private IEnumerator Timer()
     {
         int rewardCounter = 0;      // When it reaches 5, add a reward.
@@ -54,5 +50,6 @@ public class TimeManager : MonoBehaviour
             if (timeRemaining <= 0)
                 break;
         }
+        // Give rewards here!
     }
 }
