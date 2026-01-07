@@ -8,12 +8,17 @@ public class TimeManager : MonoBehaviour
 {
     private const float RewardRate = 5f;            // Give reward every x seconds.
 
+    [Header("Timer components")]
     [SerializeField] private float timeGoal;
     [SerializeField] private float timeRemaining;
-    
+
+    [Header("Pet components")]
+    [SerializeField] private PetHealth petHealth;
+    [SerializeField] private PetAge petAge;
+
     private int rewardAmount = 0;
     private UiManager uiManager;
-
+    
     private void Awake()
     {
         uiManager = GetComponent<UiManager>();
@@ -26,9 +31,10 @@ public class TimeManager : MonoBehaviour
         StartCoroutine(Timer());
     }
 
-    public void RestartTimer()
+    public void CancelFocus()
     {
         StopAllCoroutines();
+        petHealth.TakeDamage();
     }
 
     private IEnumerator Timer()
@@ -50,6 +56,12 @@ public class TimeManager : MonoBehaviour
             if (timeRemaining <= 0)
                 break;
         }
-        // Give rewards here!
+            GiveRewards(rewardAmount);
+    }
+
+    private void GiveRewards(int amount)
+    {
+        /// TODO: Give rewards to pet
+        rewardAmount = 0;
     }
 }

@@ -8,13 +8,16 @@ using System.Collections;
 /// </summary>
 public class UiManager : MonoBehaviour
 {
-    [Header("UI Components")]
+    [Header("Health Components")]
+    [SerializeField] private Image healthBar;
+
+    [Header("Timer Components")]
     [SerializeField] private Slider timeSlider;
     [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private GameObject focusScreenInteractables;
     [SerializeField] private GameObject timerComponents;
     [SerializeField] private GameObject cancelButton;
-     [Header("Screens")]
+    [Header("Screens")]
     [SerializeField] private GameObject timerScreen;
     [SerializeField] private GameObject hudScreen;
 
@@ -38,7 +41,6 @@ public class UiManager : MonoBehaviour
     public void OnTimerStart()
     {
         timeManager.InitializeTimer(timeSlider.value);
-
         focusScreenInteractables.SetActive(false);
         cancelButton.SetActive(true);
         StartCoroutine(MoveFocusUI());
@@ -62,6 +64,11 @@ public class UiManager : MonoBehaviour
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);
         timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
+    
+    public void UpdateHealthBar(int currentHealth, int maxHealth)
+    {
+        healthBar.fillAmount = (float)currentHealth/maxHealth;
+    }
 
     public void ShowTimerScreen()
     {
@@ -82,8 +89,9 @@ public class UiManager : MonoBehaviour
 
     public void CancelFocus()
     {
+        // TODO: Window confirming that the user wants to cancel focus
         ShowHUD();
-        timeManager.RestartTimer();
+        timeManager.CancelFocus();
         timerText.text = "00:00";
         timeSlider.value = 0;
     }
