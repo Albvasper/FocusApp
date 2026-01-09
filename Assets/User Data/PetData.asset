@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PetName: 
   PetType: 0
-  PetAge: 1
-  PetCurrentHealth: 6
+  PetAge: 2
+  PetCurrentHealth: 5

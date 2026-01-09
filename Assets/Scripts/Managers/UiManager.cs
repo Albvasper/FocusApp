@@ -1,6 +1,6 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 using System.Collections;
 
 /// <summary>
@@ -8,8 +8,9 @@ using System.Collections;
 /// </summary>
 public class UiManager : MonoBehaviour
 {
-    [Header("Health Components")]
+    [Header("HUD Components")]
     [SerializeField] private Image healthBar;
+    [SerializeField] private TextMeshProUGUI petNameText;
 
     [Header("Timer Components")]
     [SerializeField] private Slider timeSlider;
@@ -17,6 +18,7 @@ public class UiManager : MonoBehaviour
     [SerializeField] private GameObject focusScreenInteractables;
     [SerializeField] private GameObject timerComponents;
     [SerializeField] private GameObject cancelButton;
+
     [Header("Screens")]
     [SerializeField] private GameObject timerScreen;
     [SerializeField] private GameObject hudScreen;
@@ -32,6 +34,7 @@ public class UiManager : MonoBehaviour
 
     private void Start()
     {
+        SetName(PetDataManager.Instance.Data.PetName);
         ShowHUD();
     }
 
@@ -110,5 +113,10 @@ public class UiManager : MonoBehaviour
                 Vector3.Lerp(timerStartingPosition, targetPosition, time);
             yield return null;
         }
+    }
+        
+    private void SetName(string petName)
+    {
+        petNameText.text = petName;
     }
 }

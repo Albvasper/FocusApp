@@ -14,15 +14,15 @@ public class EggAnimator : MonoBehaviour
         startPosition = transform.localPosition;
     }
 
-    private void Start()
+    public void ShakeEggAnimation()
     {
         StartCoroutine(ShakeEgg());
     }
 
-    public void HatchEgg()
+    public void HatchEggAnimation()
     {
         StopAllCoroutines();
-        StartCoroutine(HatchEggAnimation());
+        StartCoroutine(HatchEgg());
     }
 
     private IEnumerator ShakeEgg()
@@ -55,7 +55,7 @@ public class EggAnimator : MonoBehaviour
         }
     }
 
-    private IEnumerator HatchEggAnimation()
+    private IEnumerator HatchEgg()
     {
         Debug.Log("Hatching!");
         transform.localPosition = startPosition;

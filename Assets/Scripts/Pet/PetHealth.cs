@@ -1,3 +1,4 @@
+using System.Data.Common;
 using UnityEngine;
 
 /// <summary>
@@ -5,17 +6,22 @@ using UnityEngine;
 /// </summary>
 public class PetHealth : MonoBehaviour
 {
-
+    
     /*
         Pet can die by:
             Old age
             Unhappiness: Canceling focus timer too much or not going into the app much?
     */
 
-    private int health;
-    private int maxHealth = 20;
-
     [SerializeField] private UiManager uiManager;
+    [SerializeField] private PetDataManager petDataManager;
+    private int health;
+    private int maxHealth;
+
+    private void Awake()
+    {
+        maxHealth = PetData.MaxHealth;
+    }
 
     public void SetHealth(int currentHealth)
     {

@@ -5,20 +5,39 @@ using UnityEngine;
 /// </summary>
 public class PetDataManager : MonoBehaviour
 {   
-    [SerializeField] private PetData petData;
+
+    public static PetDataManager Instance { get; private set; }
+
+    public PetData Data;
 
     [Header("Pet components")]
     [SerializeField] private PetAge petAge;
     [SerializeField] private PetBehavior petBehavior;
     [SerializeField] private PetHealth petHealth;
 
-    [Header("Managers")]
-    private UiManager uiManager;
-
     private void Awake()
     {
-        petAge.Age = petData.PetAge;
+        // Singleton
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
+        SetData();
+    }
+
+    private void SetData()
+    {
+        petAge.Age = Data.PetAge;
         //petBehavior
-        petHealth.SetHealth(petData.PetCurrentHealth);
+        petHealth.SetHealth(Data.PetCurrentHealth);
+    }
+
+    private void SaveData()
+    {
+        // TODO: Save pet data
     }
 }
