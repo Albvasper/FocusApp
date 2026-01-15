@@ -61,7 +61,8 @@ public class TimeManager : MonoBehaviour
 
     private void GiveRewards(int amount)
     {
-        /// TODO: Give rewards to pet
+        petHealth.Heal();
+        petAge.MakePetAge();
         rewardAmount = 0;
     }
 }

@@ -14,14 +14,9 @@ public class PetHealth : MonoBehaviour
     */
 
     [SerializeField] private UiManager uiManager;
-    [SerializeField] private PetDataManager petDataManager;
+    
     private int health;
-    private int maxHealth;
-
-    private void Awake()
-    {
-        maxHealth = PetData.MaxHealth;
-    }
+    private int maxHealth = PetData.MaxHealth;
 
     public void SetHealth(int currentHealth)
     {

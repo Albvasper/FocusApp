@@ -3,9 +3,8 @@ using System.Collections;
 
 public enum PetType
 {
-    Pet1,
-    Pet2,
-    Pet3
+    GhostPet,
+    PlantPet
 }
 
 /// <summary>
@@ -20,6 +19,11 @@ public class HatchingManager : MonoBehaviour
     [Header("Components")]
     [SerializeField] private EggAnimator animator;
     [SerializeField] private PetData petData;
+    [SerializeField] private SpriteRenderer petSprite;
+
+    [Header("Pet Sprites")]
+    [SerializeField] private Sprite ghostPetSprite;
+    [SerializeField] private Sprite plantPetSprite;
 
     private UiHatchingManager uiHatchingManager;
 
@@ -30,7 +34,9 @@ public class HatchingManager : MonoBehaviour
 
     private void Start()
     {
-        GenerateNewPet();
+        PetType pickedPetType = GenerateNewPet();
+        DisplayPickedPetSprite(pickedPetType);
+        
         animator.ShakeEggAnimation();
         StartCoroutine(WaitForHatching());
     }
@@ -52,11 +58,22 @@ public class HatchingManager : MonoBehaviour
         uiHatchingManager.ShowNamingScreen();
     }
 
-    private void GenerateNewPet()
+    private PetType GenerateNewPet()
     {
-        PetType petType = (PetType)Random.Range(0, 3);
-        petData.PetType = petType;
-        petData.PetAge = 1;
-        petData.PetCurrentHealth = PetData.MaxHealth;
+        PetType petType = (PetType)Random.Range(0, 2);
+        petData.Type = petType;
+        petData.CurrentLifeStage = 1;
+        petData.CurrentHealth = PetData.MaxHealth;
+        petData.CurrentAge = 0;
+        return petType;
+    }
+
+    private void DisplayPickedPetSprite(PetType petType)
+    {
+        switch (petType)
+        {
+            case PetType.GhostPet: petSprite.sprite = ghostPetSprite; break;
+            case PetType.PlantPet: petSprite.sprite = plantPetSprite; break;
+        }
     }
 }

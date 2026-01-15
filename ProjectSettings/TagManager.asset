@@ -44,6 +44,9 @@ TagManager:
   - name: Background
     uniqueID: 1759942839
     locked: 0
+  - name: Room
+    uniqueID: 1900566325
+    locked: 0
   - name: Pet
     uniqueID: 690295421
     locked: 0

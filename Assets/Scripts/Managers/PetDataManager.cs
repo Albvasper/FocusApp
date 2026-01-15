@@ -26,14 +26,16 @@ public class PetDataManager : MonoBehaviour
         {
             Instance = this;
         }
-        SetData();
+        LoadData();
     }
 
-    private void SetData()
+    private void LoadData()
     {
-        petAge.Age = Data.PetAge;
+        petAge.LifeStage = Data.CurrentLifeStage;
         //petBehavior
-        petHealth.SetHealth(Data.PetCurrentHealth);
+        petHealth.SetHealth(Data.CurrentHealth);
+        // TODO: Set pet type and replace sprite and animations
+        petAge.Age = Data.CurrentAge;
     }
 
     private void SaveData()

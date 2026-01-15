@@ -2,9 +2,11 @@ using UnityEngine;
 
 public class PetAge : MonoBehaviour
 {
-    public int Age = 0;
+    public int LifeStage;
+    public int Age;
     
-    private int maxAge = 4;
+    private int maxLifeStage = PetData.MaxLifeStage;
+    private int agingRate = PetData.MaxAge;                 // Every x years, pet will go up one life stage
     private PetHealth petHealth;
 
     private void Awake()
@@ -15,7 +17,12 @@ public class PetAge : MonoBehaviour
     public void MakePetAge()
     {
         Age++;
-        if (Age >= maxAge)
-            petHealth.Die();
+        if (Age >= agingRate)
+        {
+            Age = 0;
+            LifeStage++;
+            if (LifeStage >= maxLifeStage)
+                petHealth.Die();
+        }
     }
 }
