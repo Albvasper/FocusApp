@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d9a60f2fc9cef4db27fa4ee647a3c8, type: 3}
   m_Name: PetData
   m_EditorClassIdentifier: 
-  PetName: Mr. Gabagool
-  Type: 0
+  PetName: Chinese name
+  Type: 1
   CurrentLifeStage: 1
-  CurrentAge: 0
+  CurrentAge: 1
   CurrentHealth: 20

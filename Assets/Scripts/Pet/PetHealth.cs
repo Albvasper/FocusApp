@@ -1,4 +1,3 @@
-using System.Data.Common;
 using UnityEngine;
 
 /// <summary>
@@ -13,10 +12,14 @@ public class PetHealth : MonoBehaviour
             Unhappiness: Canceling focus timer too much or not going into the app much?
     */
 
-    [SerializeField] private UiManager uiManager;
-    
     private int health;
     private int maxHealth = PetData.MaxHealth;
+    private UiManager uiManager;
+
+    public void Initialize(UiManager uiManager)
+    {
+        this.uiManager = uiManager;
+    }
 
     public void SetHealth(int currentHealth)
     {

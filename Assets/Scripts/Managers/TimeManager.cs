@@ -12,11 +12,9 @@ public class TimeManager : MonoBehaviour
     [SerializeField] private float timeGoal;
     [SerializeField] private float timeRemaining;
 
-    [Header("Pet components")]
-    [SerializeField] private PetHealth petHealth;
-    [SerializeField] private PetAge petAge;
-
     private int rewardAmount = 0;
+    private PetHealth petHealth;
+    private PetAge petAge;
     private UiManager uiManager;
     
     private void Awake()
@@ -24,6 +22,12 @@ public class TimeManager : MonoBehaviour
         uiManager = GetComponent<UiManager>();
     }
 
+    public void Initialize(PetAge petAge, PetHealth petHealth)
+    {
+        this.petAge = petAge;
+        this.petHealth = petHealth;
+    }
+    
     public void InitializeTimer(float timeGoal)
     {
         timeRemaining = timeGoal;
