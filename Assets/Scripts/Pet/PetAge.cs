@@ -14,6 +14,8 @@ public class PetAge : MonoBehaviour
         petHealth = GetComponent<PetHealth>();
     }
 
+    // TODO: Apply visual change when loading or chaning Life stage
+
     public void MakePetAge()
     {
         Age++;

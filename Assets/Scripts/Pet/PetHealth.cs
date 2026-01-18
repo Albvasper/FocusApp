@@ -12,7 +12,7 @@ public class PetHealth : MonoBehaviour
             Unhappiness: Canceling focus timer too much or not going into the app much?
     */
 
-    private int health;
+    public int health;
     private int maxHealth = PetData.MaxHealth;
     private UiManager uiManager;
 

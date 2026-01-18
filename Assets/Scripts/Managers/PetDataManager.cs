@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 /// <summary>
@@ -42,17 +43,33 @@ public class PetDataManager : MonoBehaviour
         LoadData();
     }
 
+    private void Start()
+    {
+        // Make the phone not go to sleep automatically
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
+    }
+    
+    public void SaveLifeStage(int newLifeStage)
+    {
+        Data.CurrentLifeStage = newLifeStage;
+    }
+
+    public void SaveAge(int newAge)
+    {
+        Data.CurrentAge = newAge;
+    }
+
+    public void SaveHealth(int newHealth)
+    {
+        Data.CurrentHealth = newHealth;
+    }
+
     private void LoadData()
     {
         SpawnPet(Data.Type);
         petAge.LifeStage = Data.CurrentLifeStage;
         petHealth.SetHealth(Data.CurrentHealth);
         petAge.Age = Data.CurrentAge;
-    }
-
-    private void SaveData()
-    {
-        // TODO: Save pet data
     }
 
     // Instantiate pet GO and get components from it

@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections;
+using System;
+using Unity.VisualScripting.Antlr3.Runtime.Tree;
 
 /// <summary>
 /// Stores focus time goal and elapsed time.
@@ -12,7 +14,9 @@ public class TimeManager : MonoBehaviour
     [SerializeField] private float timeGoal;
     [SerializeField] private float timeRemaining;
 
+    private bool isFocused = false;
     private int rewardAmount = 0;
+    private bool alreadyDamagedPet = false;
     private PetHealth petHealth;
     private PetAge petAge;
     private UiManager uiManager;
@@ -20,6 +24,54 @@ public class TimeManager : MonoBehaviour
     private void Awake()
     {
         uiManager = GetComponent<UiManager>();
+    }
+
+    // Called when application is running on background 
+    private void OnApplicationPause(bool isPaused)
+    {
+        if (isPaused && isFocused && !alreadyDamagedPet)
+        {
+            Debug.Log("USER IS NOT FOCUSED!");
+            alreadyDamagedPet = true;
+            // App moved to background when on focused mode
+            petHealth.TakeDamage();
+            PetDataManager.Instance.SaveHealth(petHealth.health);
+            PetDataManager.Instance.SaveAge(petAge.Age);
+            PetDataManager.Instance.SaveLifeStage(petAge.LifeStage);
+        } else
+        {
+            OnApplicationResume();
+        }
+    }
+
+    private void OnApplicationFocus(bool focus)
+    {
+        if (isFocused && !focus && !alreadyDamagedPet)
+        {
+            Debug.Log("USER IS NOT FOCUSED!");
+            alreadyDamagedPet = true;
+            // App moved to background when on focused mode
+            petHealth.TakeDamage();
+            PetDataManager.Instance.SaveHealth(petHealth.health);
+            PetDataManager.Instance.SaveAge(petAge.Age);
+            PetDataManager.Instance.SaveLifeStage(petAge.LifeStage);
+        } else
+        {
+            OnApplicationResume();
+        }
+    }
+
+    private void OnApplicationResume()
+    {
+        alreadyDamagedPet = false;
+    }
+
+    // Called when user closes the application
+    private void OnApplicationQuit()
+    {
+        petHealth.TakeDamage();
+        isFocused = false;
+        StopAllCoroutines();
     }
 
     public void Initialize(PetAge petAge, PetHealth petHealth)
@@ -31,19 +83,22 @@ public class TimeManager : MonoBehaviour
     public void InitializeTimer(float timeGoal)
     {
         timeRemaining = timeGoal;
+        isFocused = true;
         StopAllCoroutines();
         StartCoroutine(Timer());
     }
 
     public void CancelFocus()
     {
+        isFocused = false;
         StopAllCoroutines();
         petHealth.TakeDamage();
     }
 
     private IEnumerator Timer()
     {
-        int rewardCounter = 0;      // When it reaches 5, add a reward.
+        // When it reaches 5, add a reward.
+        int rewardCounter = 0;      
 
         while (true)
         {
@@ -60,13 +115,17 @@ public class TimeManager : MonoBehaviour
             if (timeRemaining <= 0)
                 break;
         }
-            GiveRewards(rewardAmount);
+        GiveRewards(rewardAmount);
     }
 
     private void GiveRewards(int amount)
     {
-        petHealth.Heal();
-        petAge.MakePetAge();
+        isFocused = false;
+        for (int i = 0; i < amount; i++)
+        {
+            petHealth.Heal();
+            petAge.MakePetAge();
+        }
         rewardAmount = 0;
     }
 }
