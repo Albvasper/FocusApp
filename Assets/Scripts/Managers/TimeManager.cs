@@ -13,8 +13,8 @@ public class TimeManager : MonoBehaviour
     [Header("Timer components")]
     [SerializeField] private float timeGoal;
     [SerializeField] private float timeRemaining;
+    public bool isFocused = false;
 
-    private bool isFocused = false;
     private int rewardAmount = 0;
     private bool alreadyDamagedPet = false;
     private PetHealth petHealth;
@@ -31,13 +31,10 @@ public class TimeManager : MonoBehaviour
     {
         if (isPaused && isFocused && !alreadyDamagedPet)
         {
+            // App moved to background when on focused mode
             Debug.Log("USER IS NOT FOCUSED!");
             alreadyDamagedPet = true;
-            // App moved to background when on focused mode
             petHealth.TakeDamage();
-            PetDataManager.Instance.SaveHealth(petHealth.health);
-            PetDataManager.Instance.SaveAge(petAge.Age);
-            PetDataManager.Instance.SaveLifeStage(petAge.LifeStage);
         } else
         {
             OnApplicationResume();
@@ -52,9 +49,6 @@ public class TimeManager : MonoBehaviour
             alreadyDamagedPet = true;
             // App moved to background when on focused mode
             petHealth.TakeDamage();
-            PetDataManager.Instance.SaveHealth(petHealth.health);
-            PetDataManager.Instance.SaveAge(petAge.Age);
-            PetDataManager.Instance.SaveLifeStage(petAge.LifeStage);
         } else
         {
             OnApplicationResume();
@@ -82,6 +76,9 @@ public class TimeManager : MonoBehaviour
     
     public void InitializeTimer(float timeGoal)
     {
+        // Make the phone not go to sleep automatically
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
+        
         timeRemaining = timeGoal;
         isFocused = true;
         StopAllCoroutines();
@@ -93,6 +90,12 @@ public class TimeManager : MonoBehaviour
         isFocused = false;
         StopAllCoroutines();
         petHealth.TakeDamage();
+    }
+
+    public void StopTimer()
+    {
+        isFocused = false;
+        StopAllCoroutines();
     }
 
     private IEnumerator Timer()

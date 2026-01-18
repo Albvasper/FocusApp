@@ -2,6 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Handles showing screens, button functionalities and timers.
@@ -11,6 +12,7 @@ public class UiManager : MonoBehaviour
     [Header("HUD Components")]
     [SerializeField] private Image healthBar;
     [SerializeField] private TextMeshProUGUI petNameText;
+    [SerializeField] private TextMeshProUGUI deadPetNameText;
 
     [Header("Timer Components")]
     [SerializeField] private Slider timeSlider;
@@ -22,6 +24,7 @@ public class UiManager : MonoBehaviour
     [Header("Screens")]
     [SerializeField] private GameObject timerScreen;
     [SerializeField] private GameObject hudScreen;
+    [SerializeField] private GameObject deadPetScreen;
 
     private TimeManager timeManager;
     private Vector3 timerStartingPosition;
@@ -73,6 +76,11 @@ public class UiManager : MonoBehaviour
         healthBar.fillAmount = (float)currentHealth/maxHealth;
     }
 
+    public void UpdateFocusScreenHealthBar(int currentHealth, int maxHealth)
+    {
+        healthBar.fillAmount = (float)currentHealth/maxHealth;
+    }
+
     public void ShowTimerScreen()
     {
         timerComponents.transform.localPosition = timerStartingPosition;
@@ -80,6 +88,17 @@ public class UiManager : MonoBehaviour
         timerScreen.SetActive(true);
         focusScreenInteractables.SetActive(true);
         cancelButton.SetActive(false);
+    }
+    
+    public void ShowDeadPetScreen()
+    {
+        deadPetScreen.SetActive(true);
+        hudScreen.SetActive(false);
+        timerScreen.SetActive(false);
+        focusScreenInteractables.SetActive(false);
+        cancelButton.SetActive(false);
+        timerText.text = "00:00";
+        timeSlider.value = 0;
     }
 
     public void ShowHUD()
@@ -97,6 +116,11 @@ public class UiManager : MonoBehaviour
         timeManager.CancelFocus();
         timerText.text = "00:00";
         timeSlider.value = 0;
+    }
+
+    public void BuyNewEgg()
+    {
+        SceneManager.LoadScene("EggHatchingRoom");
     }
 
     private IEnumerator MoveFocusUI()
@@ -118,5 +142,6 @@ public class UiManager : MonoBehaviour
     private void SetName(string petName)
     {
         petNameText.text = petName;
+        deadPetNameText.text = petName + "  has died!";
     }
 }

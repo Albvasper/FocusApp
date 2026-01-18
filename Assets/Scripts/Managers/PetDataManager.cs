@@ -42,12 +42,6 @@ public class PetDataManager : MonoBehaviour
         timeManager = GetComponent<TimeManager>();
         LoadData();
     }
-
-    private void Start()
-    {
-        // Make the phone not go to sleep automatically
-        Screen.sleepTimeout = SleepTimeout.NeverSleep;
-    }
     
     public void SaveLifeStage(int newLifeStage)
     {
@@ -70,6 +64,15 @@ public class PetDataManager : MonoBehaviour
         petAge.LifeStage = Data.CurrentLifeStage;
         petHealth.SetHealth(Data.CurrentHealth);
         petAge.Age = Data.CurrentAge;
+        CheckPetsHealth();
+    }
+
+    private void CheckPetsHealth()
+    {
+        if (petHealth.health <= 0)
+        {
+            uiManager.ShowDeadPetScreen();
+        }
     }
 
     // Instantiate pet GO and get components from it
@@ -102,7 +105,7 @@ public class PetDataManager : MonoBehaviour
         if (petAge == null) return;
         if (petBehavior == null) return;
         
-        petHealth.Initialize(uiManager);
+        petHealth.Initialize(uiManager, timeManager);
         timeManager.Initialize(petAge, petHealth);
         petBehavior.Initialize(availablePositionsParent);
     }

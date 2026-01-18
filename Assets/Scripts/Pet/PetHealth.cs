@@ -15,16 +15,23 @@ public class PetHealth : MonoBehaviour
     public int health;
     private int maxHealth = PetData.MaxHealth;
     private UiManager uiManager;
+    private TimeManager timeManager;
 
-    public void Initialize(UiManager uiManager)
+    private void Start()
+    {
+        if (health <= 0) Die();
+    }
+    public void Initialize(UiManager uiManager, TimeManager timeManager)
     {
         this.uiManager = uiManager;
+        this.timeManager = timeManager;
     }
 
     public void SetHealth(int currentHealth)
     {
         health = currentHealth;
         uiManager.UpdateHealthBar(health, maxHealth);
+        uiManager.UpdateFocusScreenHealthBar(health, maxHealth);
     }
 
     public void Heal()
@@ -32,21 +39,28 @@ public class PetHealth : MonoBehaviour
         if (health < maxHealth)
         {
             health++;
+            PetDataManager.Instance.SaveHealth(health);
             uiManager.UpdateHealthBar(health, maxHealth);
+            uiManager.UpdateFocusScreenHealthBar(health, maxHealth);
         }
     }
 
     public void TakeDamage()
     {
         health--;
+        PetDataManager.Instance.SaveHealth(health);
+        uiManager.UpdateHealthBar(health, maxHealth);
+        uiManager.UpdateFocusScreenHealthBar(health, maxHealth);
         if (health <= 0)
         {
             Die();
-            uiManager.UpdateHealthBar(health, maxHealth);
         }
     }
 
     public void Die()
     {
+        Debug.Log("DEAD!");
+        uiManager.ShowDeadPetScreen();
+        timeManager.StopTimer();
     }
 }
