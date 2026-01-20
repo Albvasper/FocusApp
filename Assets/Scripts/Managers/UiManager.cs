@@ -25,6 +25,7 @@ public class UiManager : MonoBehaviour
     [SerializeField] private GameObject timerScreen;
     [SerializeField] private GameObject hudScreen;
     [SerializeField] private GameObject deadPetScreen;
+    [SerializeField] private GameObject successScreen;
 
     private TimeManager timeManager;
     private Vector3 timerStartingPosition;
@@ -57,7 +58,10 @@ public class UiManager : MonoBehaviour
     /// </summary>
     public void OnSliderValueChanged()
     {
-        UpdateTimerText(timeSlider.value);
+        // Snap knob every 5 minutes
+        float snapped = Mathf.Round(timeSlider.value / 300f) * 300f;
+        timeSlider.SetValueWithoutNotify(snapped);
+        UpdateTimerText(snapped);
     }
 
     /// <summary>
@@ -106,7 +110,10 @@ public class UiManager : MonoBehaviour
         hudScreen.SetActive(true);
         timerScreen.SetActive(false);
         focusScreenInteractables.SetActive(true);
+        successScreen.SetActive(false);
         cancelButton.SetActive(false);
+        timerText.text = "00:00";
+        timeSlider.value = 0;
     }
 
     public void CancelFocus()
@@ -118,6 +125,12 @@ public class UiManager : MonoBehaviour
         timeSlider.value = 0;
     }
 
+    public void ShowSucessScreen()
+    {
+        successScreen.SetActive(true);
+        timerScreen.SetActive(false);
+    }
+
     public void BuyNewEgg()
     {
         SceneManager.LoadScene("EggHatchingRoom");
@@ -127,7 +140,7 @@ public class UiManager : MonoBehaviour
     {
         float elapsed = 0f;
         const float Duration = 1f;
-        Vector3 targetPosition = new(0f, -678.5f, 0f);
+        Vector3 targetPosition = new(0f, -540.55f, 0f);
 
         while (elapsed < Duration)
         {

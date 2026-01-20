@@ -1,14 +1,12 @@
 using UnityEngine;
 using System.Collections;
-using System;
-using Unity.VisualScripting.Antlr3.Runtime.Tree;
 
 /// <summary>
 /// Stores focus time goal and elapsed time.
 /// </summary>
 public class TimeManager : MonoBehaviour
 {
-    private const float RewardRate = 5f;            // Give reward every x seconds.
+    private const float RewardRate = 300f;            // Give reward every x seconds.
 
     [Header("Timer components")]
     [SerializeField] private float timeGoal;
@@ -119,6 +117,7 @@ public class TimeManager : MonoBehaviour
                 break;
         }
         GiveRewards(rewardAmount);
+        uiManager.ShowSucessScreen();
     }
 
     private void GiveRewards(int amount)
