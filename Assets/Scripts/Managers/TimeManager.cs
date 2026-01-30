@@ -61,8 +61,8 @@ public class TimeManager : MonoBehaviour
     // Called when user closes the application
     private void OnApplicationQuit()
     {
-        petHealth.TakeDamage();
-        isFocused = false;
+        if (isFocused)
+            petHealth.TakeDamage();
         StopAllCoroutines();
     }
 

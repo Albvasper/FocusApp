@@ -47,6 +47,7 @@ public class PetHealth : MonoBehaviour
 
     public void TakeDamage()
     {
+        Debug.Log("WTF");
         health--;
         PetDataManager.Instance.SaveHealth(health);
         uiManager.UpdateHealthBar(health, maxHealth);
@@ -59,7 +60,6 @@ public class PetHealth : MonoBehaviour
 
     public void Die()
     {
-        Debug.Log("DEAD!");
         uiManager.ShowDeadPetScreen();
         timeManager.StopTimer();
     }

@@ -11,8 +11,11 @@ public class UiManager : MonoBehaviour
 {
     [Header("HUD Components")]
     [SerializeField] private Image healthBar;
+    [SerializeField] private Image focusHealthBar;
     [SerializeField] private TextMeshProUGUI petNameText;
+    [SerializeField] private TextMeshProUGUI focusPetNameText;
     [SerializeField] private TextMeshProUGUI deadPetNameText;
+    [SerializeField] private GameObject focusPetInfoWindow;
 
     [Header("Timer Components")]
     [SerializeField] private Slider timeSlider;
@@ -48,9 +51,11 @@ public class UiManager : MonoBehaviour
     public void OnTimerStart()
     {
         timeManager.InitializeTimer(timeSlider.value);
+        StartCoroutine(MoveFocusUI());
+
         focusScreenInteractables.SetActive(false);
         cancelButton.SetActive(true);
-        StartCoroutine(MoveFocusUI());
+        focusPetInfoWindow.SetActive(true);
     }
     
     /// <summary>
@@ -78,16 +83,19 @@ public class UiManager : MonoBehaviour
     public void UpdateHealthBar(int currentHealth, int maxHealth)
     {
         healthBar.fillAmount = (float)currentHealth/maxHealth;
+        focusHealthBar.fillAmount = (float)currentHealth/maxHealth;
     }
 
     public void UpdateFocusScreenHealthBar(int currentHealth, int maxHealth)
     {
         healthBar.fillAmount = (float)currentHealth/maxHealth;
+        focusHealthBar.fillAmount = (float)currentHealth/maxHealth;
     }
 
     public void ShowTimerScreen()
     {
         timerComponents.transform.localPosition = timerStartingPosition;
+        focusPetInfoWindow.SetActive(false);
         hudScreen.SetActive(false);
         timerScreen.SetActive(true);
         focusScreenInteractables.SetActive(true);
@@ -96,12 +104,13 @@ public class UiManager : MonoBehaviour
     
     public void ShowDeadPetScreen()
     {
+        AudioManager.Instance.PlayGameOverSFX();
         deadPetScreen.SetActive(true);
         hudScreen.SetActive(false);
         timerScreen.SetActive(false);
         focusScreenInteractables.SetActive(false);
         cancelButton.SetActive(false);
-        timerText.text = "00:00";
+        timerText.text = "05:00";
         timeSlider.value = 0;
     }
 
@@ -112,7 +121,7 @@ public class UiManager : MonoBehaviour
         focusScreenInteractables.SetActive(true);
         successScreen.SetActive(false);
         cancelButton.SetActive(false);
-        timerText.text = "00:00";
+        timerText.text = "05:00";
         timeSlider.value = 0;
     }
 
@@ -121,18 +130,20 @@ public class UiManager : MonoBehaviour
         // TODO: Window confirming that the user wants to cancel focus
         ShowHUD();
         timeManager.CancelFocus();
-        timerText.text = "00:00";
+        timerText.text = "05:00";
         timeSlider.value = 0;
     }
 
     public void ShowSucessScreen()
     {
+        AudioManager.Instance.PlaySuccessSFX();
         successScreen.SetActive(true);
         timerScreen.SetActive(false);
     }
 
     public void BuyNewEgg()
     {
+        PetDataManager.Instance.Data.PetAssinged = false;
         SceneManager.LoadScene("EggHatchingRoom");
     }
 
@@ -155,6 +166,7 @@ public class UiManager : MonoBehaviour
     private void SetName(string petName)
     {
         petNameText.text = petName;
-        deadPetNameText.text = petName + "  has died!";
+        focusPetNameText.text = petName;
+        deadPetNameText.text = petName + " has died!";
     }
 }

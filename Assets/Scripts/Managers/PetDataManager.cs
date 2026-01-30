@@ -37,7 +37,6 @@ public class PetDataManager : MonoBehaviour
         {
             Instance = this;
         }
-
         uiManager = GetComponent<UiManager>();
         timeManager = GetComponent<TimeManager>();
         LoadData();
@@ -46,20 +45,25 @@ public class PetDataManager : MonoBehaviour
     public void SaveLifeStage(int newLifeStage)
     {
         Data.CurrentLifeStage = newLifeStage;
+        PetDataSaveSystem.Save(Data);
     }
 
     public void SaveAge(int newAge)
     {
         Data.CurrentAge = newAge;
+        PetDataSaveSystem.Save(Data);
     }
 
     public void SaveHealth(int newHealth)
     {
         Data.CurrentHealth = newHealth;
+        PetDataSaveSystem.Save(Data);
     }
 
     private void LoadData()
     {
+        PetDataSaveSystem.Load(Data);
+        
         SpawnPet(Data.Type);
         petAge.LifeStage = Data.CurrentLifeStage;
         petHealth.SetHealth(Data.CurrentHealth);

@@ -6,7 +6,7 @@ using TMPro;
 public class UiHatchingManager : MonoBehaviour
 {
     [SerializeField] private GameObject namingScreen;
-    [SerializeField] private PetData petData;
+    [SerializeField] private PetData data;
 
     private void Awake()
     {
@@ -20,7 +20,8 @@ public class UiHatchingManager : MonoBehaviour
 
     public void SetPetName(TMP_InputField input)
     {
-        petData.PetName = input.text;
+        data.PetName = input.text;
+        PetDataSaveSystem.Save(data);
         SceneManager.LoadScene("PetRoom");
     }
 }

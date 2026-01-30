@@ -8,6 +8,7 @@ public class PetData : ScriptableObject
     public const int MaxLifeStage = 4;
     public const int MaxAge = 10;
 
+    public bool PetAssinged;
     public string PetName;
     public PetType Type;
     [Range(1, MaxLifeStage)] public int CurrentLifeStage;

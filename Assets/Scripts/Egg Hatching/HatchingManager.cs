@@ -18,7 +18,7 @@ public class HatchingManager : MonoBehaviour
 
     [Header("Components")]
     [SerializeField] private EggAnimator animator;
-    [SerializeField] private PetData petData;
+    [SerializeField] private PetData data;
     [SerializeField] private SpriteRenderer petSprite;
 
     [Header("Pet Sprites")]
@@ -30,10 +30,14 @@ public class HatchingManager : MonoBehaviour
     private void Awake()
     {
         uiHatchingManager = GetComponent<UiHatchingManager>();
+        PetDataSaveSystem.Load(data);
     }
 
     private void Start()
     {
+        data.PetAssinged = true;
+        PetDataSaveSystem.Save(data);
+        
         PetType pickedPetType = GenerateNewPet();
         DisplayPickedPetSprite(pickedPetType);
         
@@ -61,10 +65,12 @@ public class HatchingManager : MonoBehaviour
     private PetType GenerateNewPet()
     {
         PetType petType = (PetType)Random.Range(0, 2);
-        petData.Type = petType;
-        petData.CurrentLifeStage = 1;
-        petData.CurrentHealth = PetData.MaxHealth;
-        petData.CurrentAge = 0;
+        data.Type = petType;
+        data.CurrentLifeStage = 1;
+        data.CurrentHealth = PetData.MaxHealth;
+        data.CurrentAge = 0;
+        
+        PetDataSaveSystem.Save(data);
         return petType;
     }
 

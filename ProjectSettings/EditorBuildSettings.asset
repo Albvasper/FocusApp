@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Levels/LoadingScene.unity
+    guid: 75d823809d85624468307bd036fc5fe6
+  - enabled: 1
     path: Assets/Levels/EggHatchingRoom.unity
     guid: 291198b5f7a98ba42a776ed2c5c808d8
   - enabled: 1

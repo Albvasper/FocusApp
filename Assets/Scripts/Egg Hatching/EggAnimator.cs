@@ -39,16 +39,19 @@ public class EggAnimator : MonoBehaviour
 
     private IEnumerator ShakeEgg()
     {
-        int shakes = 4;
+        int shakes = 6;
 
         while (true)
         {
+            AudioManager.Instance.PlayEggShakeSFX();
+
             for (int i = 0; i < shakes; i++)
             {
                 // Move right
                 yield return MoveEggX(startPosition.x + shakeDistance, shakeSpeed);
                 // Move left
                 yield return MoveEggX(startPosition.x - shakeDistance, shakeSpeed);
+                
             }
             transform.localPosition = startPosition;
             yield return new WaitForSeconds(shakeCooldown);
@@ -69,7 +72,9 @@ public class EggAnimator : MonoBehaviour
 
     private IEnumerator HatchEgg()
     {
-        Debug.Log("Hatching!");
+        AudioManager.Instance.StopSFX();
+        AudioManager.Instance.PlayEggCrackSFX();
+
         transform.localPosition = startPosition;
         // Crack egg animation
         eggSpriteRenderer.sprite = crackedEggSprite;
@@ -83,6 +88,8 @@ public class EggAnimator : MonoBehaviour
 
     private IEnumerator ShowPet()
     {
+        AudioManager.Instance.PlaySlideWhistleUpSFX();
+
         Vector3 topShellStartingPosition = crackedEggTop.transform.localPosition;
         Vector3 topShellTargetPosition = new(0f,9.98f,0f);
         float duration = 0.5f;
