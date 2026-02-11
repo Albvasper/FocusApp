@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 351672e59fd620a43a85527115779afc
+guid: e5e2e86f5fca87e4599c70eaeef76f34
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4646649027328027380
-    second: Egg_0
+      213: 2820143329777312509
+    second: Frog_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,17 +96,43 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Egg_0
+      name: Frog_0
       rect:
         serializedVersion: 2
-        x: 165
-        y: 17
-        width: 1820
-        height: 2116
+        x: 0
+        y: 0
+        width: 366
+        height: 562
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4fa2dcddba63c7040800000000000000
-      internalID: 4646649027328027380
+      spriteID: df2601baa69232720800000000000000
+      internalID: 2820143329777312509
       vertices: []
       indices: 
       edges: []
@@ -135,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Egg_0: 4646649027328027380
+      Frog_0: 2820143329777312509
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

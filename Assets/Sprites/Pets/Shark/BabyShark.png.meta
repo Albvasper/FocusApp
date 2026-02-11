@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 97847bf799e501245acfdf6e61fd10ed
+guid: 701110286a90f664f8f97c01bdca9433
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3551232688302553359
-    second: CrackedEgg_0
+      213: 8139920967987118930
+    second: BabyShark_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,17 +96,43 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: CrackedEgg_0
+      name: BabyShark_0
       rect:
         serializedVersion: 2
-        x: 165
-        y: 17
-        width: 1820
-        height: 2116
+        x: 0
+        y: 0
+        width: 335
+        height: 377
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f0977059053884130800000000000000
-      internalID: 3551232688302553359
+      spriteID: 25340a44efec6f070800000000000000
+      internalID: 8139920967987118930
       vertices: []
       indices: 
       edges: []
@@ -135,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      CrackedEgg_0: 3551232688302553359
+      BabyShark_0: 8139920967987118930
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -91,7 +91,7 @@ public class EggAnimator : MonoBehaviour
         AudioManager.Instance.PlaySlideWhistleUpSFX();
 
         Vector3 topShellStartingPosition = crackedEggTop.transform.localPosition;
-        Vector3 topShellTargetPosition = new(0f,9.98f,0f);
+        Vector3 topShellTargetPosition = new(0f,7.01f,0f);
         float duration = 0.5f;
         float elapsedTime = 0;
 

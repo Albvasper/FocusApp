@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 142d7459ceb2eac42b850aff32ae4ec9
+guid: 214c7a9e99ee5624a8b2a0082e6e36e5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4200123378952021636
-    second: CrackedEggTop_0
+      213: -5704724440058697048
+    second: EggCracked_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,17 +96,43 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: CrackedEggTop_0
+      name: EggCracked_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1719
-        height: 1247
+        width: 1180
+        height: 1395
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c7950c04a0a26b5c0800000000000000
-      internalID: -4200123378952021636
+      spriteID: 8aaefc0c85fb4d0b0800000000000000
+      internalID: -5704724440058697048
       vertices: []
       indices: 
       edges: []
@@ -135,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      CrackedEggTop_0: -4200123378952021636
+      EggCracked_0: -5704724440058697048
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 2e005a498bb63524980a1aeaa0d4dcd7
+guid: f10b0480a820553429aaf0461565f052
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6134968063386617091
-    second: BgCircle_0
+      213: -1641520249444231171
+    second: BarBorder_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,17 +96,43 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BgCircle_0
+      name: BarBorder_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 2150
-        height: 2150
+        width: 834
+        height: 123
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: dfa79710d073cdaa0800000000000000
-      internalID: -6134968063386617091
+      spriteID: df71440c7062839e0800000000000000
+      internalID: -1641520249444231171
       vertices: []
       indices: 
       edges: []
@@ -135,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      BgCircle_0: -6134968063386617091
+      BarBorder_0: -1641520249444231171
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
