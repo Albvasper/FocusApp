@@ -14,8 +14,9 @@ public class PetDataManager : MonoBehaviour
     [SerializeField] private Transform spawnPoint;
 
     [Header("Pet Prefabs")]
-    [SerializeField] private GameObject ghostPetPrefab;
-    [SerializeField] private GameObject plantPetPrefab;
+    [SerializeField] private GameObject bearPetPrefab;
+    [SerializeField] private GameObject frogPetPrefab;
+    [SerializeField] private GameObject sharkPetPrefab;
 
     [Header("Components")]
     [SerializeField] private GameObject availablePositionsParent;
@@ -67,16 +68,7 @@ public class PetDataManager : MonoBehaviour
         SpawnPet(Data.Type);
         petAge.LifeStage = Data.CurrentLifeStage;
         petHealth.SetHealth(Data.CurrentHealth);
-        petAge.Age = Data.CurrentAge;
-        CheckPetsHealth();
-    }
-
-    private void CheckPetsHealth()
-    {
-        if (petHealth.health <= 0)
-        {
-            uiManager.ShowDeadPetScreen();
-        }
+        petAge.SetAge(Data.CurrentAge);
     }
 
     // Instantiate pet GO and get components from it
@@ -86,11 +78,14 @@ public class PetDataManager : MonoBehaviour
 
         switch (petType)
         {
-            case PetType.GhostPet:
-                pet = Instantiate(ghostPetPrefab, spawnPoint.position, Quaternion.identity);
+            case PetType.Bear:
+                pet = Instantiate(bearPetPrefab, spawnPoint.position, Quaternion.identity);
             break;
-            case PetType.PlantPet: 
-                pet = Instantiate(plantPetPrefab, spawnPoint.position, Quaternion.identity); 
+            case PetType.Frog: 
+                pet = Instantiate(frogPetPrefab, spawnPoint.position, Quaternion.identity); 
+            break;
+            case PetType.Shark: 
+                pet = Instantiate(sharkPetPrefab, spawnPoint.position, Quaternion.identity); 
             break;
         }
 
@@ -110,6 +105,7 @@ public class PetDataManager : MonoBehaviour
         if (petBehavior == null) return;
         
         petHealth.Initialize(uiManager, timeManager);
+        petAge.Initialize(uiManager);
         timeManager.Initialize(petAge, petHealth);
         petBehavior.Initialize(availablePositionsParent);
     }

@@ -5,8 +5,8 @@ public class PetData : ScriptableObject
 {
 
     public const int MaxHealth = 20;
-    public const int MaxLifeStage = 4;
-    public const int MaxAge = 10;
+    public const int MaxLifeStage = 4;          // If pet ages more than MaxLiofeStage it will die
+    public const int MaxAge = 10;               // Every x years, pet will go up one life stage
 
     public bool PetAssinged;
     public string PetName;

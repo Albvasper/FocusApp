@@ -9,18 +9,20 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class UiManager : MonoBehaviour
 {
-    [Header("HUD Components")]
+    [Header("Pet bars")]
     [SerializeField] private Image healthBar;
-    [SerializeField] private Image focusHealthBar;
+    [SerializeField] private LevelPellet[] levelPellets;
+
+    [Header("HUD Components")]
     [SerializeField] private TextMeshProUGUI petNameText;
-    [SerializeField] private TextMeshProUGUI focusPetNameText;
     [SerializeField] private TextMeshProUGUI deadPetNameText;
-    [SerializeField] private GameObject focusPetInfoWindow;
+    [SerializeField] private GameObject petCard;
 
     [Header("Timer Components")]
     [SerializeField] private Slider timeSlider;
     [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private GameObject focusScreenInteractables;
+    [SerializeField] private GameObject focusScreenBG;
     [SerializeField] private GameObject timerComponents;
     [SerializeField] private GameObject cancelButton;
 
@@ -37,6 +39,7 @@ public class UiManager : MonoBehaviour
     {
         timeManager = GetComponent<TimeManager>();
         timerStartingPosition = timerComponents.transform.localPosition;
+        ClearLevelPellets();
     }
 
     private void Start()
@@ -54,8 +57,9 @@ public class UiManager : MonoBehaviour
         StartCoroutine(MoveFocusUI());
 
         focusScreenInteractables.SetActive(false);
+        focusScreenBG.SetActive(false);
         cancelButton.SetActive(true);
-        focusPetInfoWindow.SetActive(true);
+        //focusPetInfoWindow.SetActive(true);
     }
     
     /// <summary>
@@ -83,22 +87,16 @@ public class UiManager : MonoBehaviour
     public void UpdateHealthBar(int currentHealth, int maxHealth)
     {
         healthBar.fillAmount = (float)currentHealth/maxHealth;
-        focusHealthBar.fillAmount = (float)currentHealth/maxHealth;
-    }
-
-    public void UpdateFocusScreenHealthBar(int currentHealth, int maxHealth)
-    {
-        healthBar.fillAmount = (float)currentHealth/maxHealth;
-        focusHealthBar.fillAmount = (float)currentHealth/maxHealth;
     }
 
     public void ShowTimerScreen()
     {
         timerComponents.transform.localPosition = timerStartingPosition;
-        focusPetInfoWindow.SetActive(false);
+        //focusPetInfoWindow.SetActive(false);
         hudScreen.SetActive(false);
         timerScreen.SetActive(true);
         focusScreenInteractables.SetActive(true);
+        focusScreenBG.SetActive(true);
         cancelButton.SetActive(false);
     }
     
@@ -109,6 +107,7 @@ public class UiManager : MonoBehaviour
         hudScreen.SetActive(false);
         timerScreen.SetActive(false);
         focusScreenInteractables.SetActive(false);
+        focusScreenBG.SetActive(false);
         cancelButton.SetActive(false);
         timerText.text = "05:00";
         timeSlider.value = 0;
@@ -116,9 +115,11 @@ public class UiManager : MonoBehaviour
 
     public void ShowHUD()
     {
+        petCard.SetActive(true);
         hudScreen.SetActive(true);
         timerScreen.SetActive(false);
         focusScreenInteractables.SetActive(true);
+        focusScreenBG.SetActive(true);
         successScreen.SetActive(false);
         cancelButton.SetActive(false);
         timerText.text = "05:00";
@@ -147,6 +148,31 @@ public class UiManager : MonoBehaviour
         SceneManager.LoadScene("EggHatchingRoom");
     }
 
+    public void HideUI()
+    {
+        petCard.SetActive(false);
+        timerScreen.SetActive(false);
+        hudScreen.SetActive(false);
+        deadPetScreen.SetActive(false);
+        successScreen.SetActive(false);
+    }
+
+    public void UpdateLevelPellets(int currentAge)
+    {
+        for (int i = 0; i < currentAge; i++)
+        {
+            levelPellets[i].ShowPellet();
+        }
+    }
+
+    public void ClearLevelPellets()
+    {
+        foreach (LevelPellet pellet in levelPellets)
+        {
+            pellet.HidePellet();
+        }
+    }
+
     private IEnumerator MoveFocusUI()
     {
         float elapsed = 0f;
@@ -166,7 +192,6 @@ public class UiManager : MonoBehaviour
     private void SetName(string petName)
     {
         petNameText.text = petName;
-        focusPetNameText.text = petName;
         deadPetNameText.text = petName + " has died!";
     }
 }

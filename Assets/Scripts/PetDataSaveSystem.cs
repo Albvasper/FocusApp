@@ -54,7 +54,7 @@ public static class PetDataSaveSystem
         catch
         {
             Debug.LogError("Save file corrupted. Resetting.");
-            Save(petData); // overwrite bad file
+            Save(petData);
         }
     }
 

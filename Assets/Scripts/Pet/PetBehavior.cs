@@ -7,6 +7,8 @@ public class PetBehavior : MonoBehaviour
     private const float MovementCooldownMin = 1f;
     private const float MovementCooldownMax = 10f;
 
+    public bool CanMove = true;
+
     private List<Vector3> availablePositions = new();
     private Vector3 targetPosition;
     private float cooldown = 0f;
@@ -20,14 +22,17 @@ public class PetBehavior : MonoBehaviour
     
     private void FixedUpdate()
     {
-        counter += Time.deltaTime;
-        if (counter >= cooldown)
+        if (CanMove)
         {
-            targetPosition = availablePositions[Random.Range(0, availablePositions.Count-1)];
-            cooldown = Random.Range(MovementCooldownMin, MovementCooldownMax);
-            StopAllCoroutines();
-            StartCoroutine(Walk(targetPosition));
-            counter = 0;
+            counter += Time.deltaTime;
+            if (counter >= cooldown)
+            {
+                targetPosition = availablePositions[Random.Range(0, availablePositions.Count-1)];
+                cooldown = Random.Range(MovementCooldownMin, MovementCooldownMax);
+                StopAllCoroutines();
+                StartCoroutine(Walk(targetPosition));
+                counter = 0;
+            }
         }
     }
 
@@ -42,7 +47,7 @@ public class PetBehavior : MonoBehaviour
     private IEnumerator Walk(Vector3 targetPosition)
     {
         Vector3 startingPosition = transform.position;
-        float duration = 1;
+        float duration = 2;
         float timeElapsed = 0;
 
         while(timeElapsed < duration)
@@ -53,4 +58,5 @@ public class PetBehavior : MonoBehaviour
         }
         transform.position = targetPosition;
     }
+
 }

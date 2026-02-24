@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PetAssinged: 0
   PetName: 
-  Type: 0
+  Type: 1
   CurrentLifeStage: 1
   CurrentAge: 1
-  CurrentHealth: 0
+  CurrentHealth: 20

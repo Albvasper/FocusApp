@@ -7,13 +7,12 @@ public class EggAnimator : MonoBehaviour
     [SerializeField] private Sprite crackedEggSprite;
     [SerializeField] private GameObject crackedEggTop;
     [SerializeField] private GameObject crackedEggBottom;
+
     [Header("Animation settings")]
     [Range(0f, 8f)][SerializeField] private float shakeDistance = 8f;
     [Range(0f, 20f)][SerializeField] private float shakeSpeed = 20f;
     [Range(0f, 5f)][SerializeField] private float shakeCooldown = 1f;
     [Range(0f, 5f)][SerializeField] private float crackedAnimationDuration = 3f;
-    [Header("Components")]
-    private SpriteRenderer petSpriteRenderer;
 
     private Vector3 startPosition;
     private SpriteRenderer eggSpriteRenderer;
@@ -91,7 +90,7 @@ public class EggAnimator : MonoBehaviour
         AudioManager.Instance.PlaySlideWhistleUpSFX();
 
         Vector3 topShellStartingPosition = crackedEggTop.transform.localPosition;
-        Vector3 topShellTargetPosition = new(0f,7.01f,0f);
+        Vector3 topShellTargetPosition = new(0f,6.5f,0f);
         float duration = 0.5f;
         float elapsedTime = 0;
 

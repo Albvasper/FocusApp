@@ -11,6 +11,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip eggCrackSFX;
     [SerializeField] private AudioClip eggShakeSFX;
     [SerializeField] private AudioClip slideWhistleSFX;
+    [SerializeField] private AudioClip heavenlyChoirSFX;
 
     private void Awake()
     {
@@ -53,6 +54,11 @@ public class AudioManager : MonoBehaviour
     public void PlaySlideWhistleUpSFX()
     {
         sfxSource.PlayOneShot(slideWhistleSFX);
+    }
+
+    public void PlayHeavenlyChoir()
+    {
+        sfxSource.PlayOneShot(heavenlyChoirSFX);
     }
 
     public void StopSFX()

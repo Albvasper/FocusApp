@@ -3,8 +3,9 @@ using System.Collections;
 
 public enum PetType
 {
-    GhostPet,
-    PlantPet
+    Bear,
+    Frog,
+    Shark
 }
 
 /// <summary>
@@ -22,8 +23,9 @@ public class HatchingManager : MonoBehaviour
     [SerializeField] private SpriteRenderer petSprite;
 
     [Header("Pet Sprites")]
-    [SerializeField] private Sprite ghostPetSprite;
-    [SerializeField] private Sprite plantPetSprite;
+    [SerializeField] private Sprite bearPetSprite;
+    [SerializeField] private Sprite frogPetSprite;
+    [SerializeField] private Sprite sharkPetSprite;
 
     private UiHatchingManager uiHatchingManager;
 
@@ -78,8 +80,9 @@ public class HatchingManager : MonoBehaviour
     {
         switch (petType)
         {
-            case PetType.GhostPet: petSprite.sprite = ghostPetSprite; break;
-            case PetType.PlantPet: petSprite.sprite = plantPetSprite; break;
+            case PetType.Bear: petSprite.sprite = bearPetSprite; break;
+            case PetType.Frog: petSprite.sprite = frogPetSprite; break;
+            case PetType.Shark: petSprite.sprite = sharkPetSprite; break;
         }
     }
 }

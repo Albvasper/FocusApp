@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 /// <summary>
@@ -5,22 +6,29 @@ using UnityEngine;
 /// </summary>
 public class PetHealth : MonoBehaviour
 {
-    
-    /*
-        Pet can die by:
-            Old age
-            Unhappiness: Canceling focus timer too much or not going into the app much?
-    */
-
     public int health;
+
+    [SerializeField] private GameObject halo;
+    [SerializeField] private GameObject wings;
+
     private int maxHealth = PetData.MaxHealth;
     private UiManager uiManager;
     private TimeManager timeManager;
+    private PetBehavior behavior;
+
+    private void Awake()
+    {
+        behavior = GetComponent<PetBehavior>();
+    }
 
     private void Start()
     {
+        halo.SetActive(false);
+        wings.SetActive(false);
+
         if (health <= 0) Die();
     }
+    
     public void Initialize(UiManager uiManager, TimeManager timeManager)
     {
         this.uiManager = uiManager;
@@ -31,8 +39,7 @@ public class PetHealth : MonoBehaviour
     {
         health = currentHealth;
         uiManager.UpdateHealthBar(health, maxHealth);
-        uiManager.UpdateFocusScreenHealthBar(health, maxHealth);
-    }
+    }   
 
     public void Heal()
     {
@@ -41,7 +48,6 @@ public class PetHealth : MonoBehaviour
             health++;
             PetDataManager.Instance.SaveHealth(health);
             uiManager.UpdateHealthBar(health, maxHealth);
-            uiManager.UpdateFocusScreenHealthBar(health, maxHealth);
         }
     }
 
@@ -50,7 +56,6 @@ public class PetHealth : MonoBehaviour
         health--;
         PetDataManager.Instance.SaveHealth(health);
         uiManager.UpdateHealthBar(health, maxHealth);
-        uiManager.UpdateFocusScreenHealthBar(health, maxHealth);
         if (health <= 0)
         {
             Die();
@@ -59,7 +64,34 @@ public class PetHealth : MonoBehaviour
 
     public void Die()
     {
-        uiManager.ShowDeadPetScreen();
+        behavior.CanMove = false;
         timeManager.StopTimer();
+        uiManager.HideUI();
+        PlaceWingsAndHalo();
+        StartCoroutine(DeathAnimation());
+        AudioManager.Instance.PlayHeavenlyChoir();
+    }
+
+    private void PlaceWingsAndHalo()
+    {
+        halo.SetActive(true);
+        wings.SetActive(true);
+    }
+
+    private IEnumerator DeathAnimation()
+    {
+        float duration = 8f;
+        float timeElapsed = 0;
+        Vector3 startingPosition = transform.position;
+        Vector3 targetPosition = new(0f, 45f, 0f);
+
+        while(timeElapsed < duration)
+        {
+            transform.position = Vector3.Lerp(startingPosition, targetPosition, timeElapsed / duration);
+            timeElapsed += Time.deltaTime;
+            yield return null;
+        }
+        gameObject.SetActive(false);
+        uiManager.ShowDeadPetScreen();
     }
 }
