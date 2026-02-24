@@ -61,9 +61,18 @@ public class PetAge : MonoBehaviour
     {
         switch (LifeStage)
         {
-            case 1: spriteRenderer.sprite = babyPetSprite; break;
-            case 2: spriteRenderer.sprite = standardPetSprite; break;
-            default: spriteRenderer.sprite = oldPetSprite; break;
+            case 1: 
+                spriteRenderer.sprite = babyPetSprite; 
+                uiManager.AssignProfilePicture(babyPetSprite);
+            break;
+            case 2: 
+                spriteRenderer.sprite = standardPetSprite; 
+                uiManager.AssignProfilePicture(standardPetSprite);
+            break;
+            default: 
+                spriteRenderer.sprite = oldPetSprite; 
+                uiManager.AssignProfilePicture(oldPetSprite);
+            break;
         }
     }
 }

@@ -17,6 +17,7 @@ public class UiManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI petNameText;
     [SerializeField] private TextMeshProUGUI deadPetNameText;
     [SerializeField] private GameObject petCard;
+    [SerializeField] private Image petProfilePicture;
 
     [Header("Timer Components")]
     [SerializeField] private Slider timeSlider;
@@ -171,6 +172,11 @@ public class UiManager : MonoBehaviour
         {
             pellet.HidePellet();
         }
+    }
+
+    public void AssignProfilePicture(Sprite petSprite)
+    {
+        petProfilePicture.sprite = petSprite;
     }
 
     private IEnumerator MoveFocusUI()
