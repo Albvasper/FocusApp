@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: d03412996aebf55458fb92ad9a474dda
+guid: 0e4e90e7ffb53554abba2d14f6519528
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4646649027328027380
-    second: Egg_0
+      213: -6898465214236787873
+    second: Dock_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Egg_0
+      name: Dock_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1180
-        height: 1395
+        x: 3
+        y: 3
+        width: 2804
+        height: 607
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4fa2dcddba63c7040800000000000000
-      internalID: 4646649027328027380
+      spriteID: f5bf602ff6ab340a0800000000000000
+      internalID: -6898465214236787873
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Egg_0: 4646649027328027380
+      Dock_0: -6898465214236787873
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
