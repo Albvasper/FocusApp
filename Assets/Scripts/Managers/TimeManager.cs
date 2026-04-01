@@ -6,22 +6,23 @@ using System.Collections;
 /// </summary>
 public class TimeManager : MonoBehaviour
 {
-    private const float RewardRate = 300f;            // Give reward every x seconds.
+    private const float RewardRate = 60f;            // Give reward every x seconds.
 
     [Header("Timer components")]
     [SerializeField] private float timeGoal;
     [SerializeField] private float timeRemaining;
     public bool isFocused = false;
 
-    private int rewardAmount = 0;
     private bool alreadyDamagedPet = false;
     private PetHealth petHealth;
     private PetAge petAge;
     private UiManager uiManager;
+    private LeafManager leafManager;
     
     private void Awake()
     {
         uiManager = GetComponent<UiManager>();
+        leafManager = GetComponent<LeafManager>();
     }
 
     // Called when application is running on background 
@@ -96,9 +97,11 @@ public class TimeManager : MonoBehaviour
         StopAllCoroutines();
     }
 
+    // Count seconds and keep count of rewards
     private IEnumerator Timer()
     {
-        // When it reaches 5, add a reward.
+        int rewardAmount = 0;
+        // When it reaches X, add a reward.
         int rewardCounter = 0;      
 
         while (true)
@@ -123,11 +126,6 @@ public class TimeManager : MonoBehaviour
     private void GiveRewards(int amount)
     {
         isFocused = false;
-        for (int i = 0; i < amount; i++)
-        {
-            petHealth.Heal();
-            petAge.MakePetAge();
-        }
-        rewardAmount = 0;
+        leafManager.AddLeafs(amount);
     }
 }

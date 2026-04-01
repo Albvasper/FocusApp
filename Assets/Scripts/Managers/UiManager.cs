@@ -18,6 +18,7 @@ public class UiManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI deadPetNameText;
     [SerializeField] private GameObject petCard;
     [SerializeField] private Image petProfilePicture;
+    [SerializeField] private TextMeshProUGUI leafCounterText;
 
     [Header("Timer Components")]
     [SerializeField] private Slider timeSlider;
@@ -84,7 +85,12 @@ public class UiManager : MonoBehaviour
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);
         timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
-    
+
+    public void UpdateLeafCounterText(int leafAmount)
+    {
+        leafCounterText.text = leafAmount.ToString();
+    }
+
     public void UpdateHealthBar(int currentHealth, int maxHealth)
     {
         healthBar.fillAmount = (float)currentHealth/maxHealth;
