@@ -56,9 +56,9 @@ public class PetBehavior : MonoBehaviour
         float duration = 2;
         float timeElapsed = 0;
 
-        PetAnimator.IsWalking();
         while(timeElapsed < duration)
         {
+            PetAnimator.IsWalking();
             transform.position = Vector3.Lerp(startingPosition, targetPosition, timeElapsed / duration);
             timeElapsed += Time.deltaTime;
             yield return null;
