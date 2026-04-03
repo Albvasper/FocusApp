@@ -13,6 +13,12 @@ public class PetBehavior : MonoBehaviour
     private Vector3 targetPosition;
     private float cooldown = 0f;
     private float counter = 0f;
+    private PetAnimator PetAnimator;
+
+    private void Awake() 
+    {
+        PetAnimator = GetComponent<PetAnimator>();    
+    }
 
     private void Start()
     {
@@ -50,6 +56,7 @@ public class PetBehavior : MonoBehaviour
         float duration = 2;
         float timeElapsed = 0;
 
+        PetAnimator.IsWalking();
         while(timeElapsed < duration)
         {
             transform.position = Vector3.Lerp(startingPosition, targetPosition, timeElapsed / duration);
@@ -57,6 +64,8 @@ public class PetBehavior : MonoBehaviour
             yield return null;
         }
         transform.position = targetPosition;
+        PetAnimator.IsIDLEing();
+
     }
 
 }
