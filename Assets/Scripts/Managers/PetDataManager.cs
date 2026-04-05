@@ -106,7 +106,7 @@ public class PetDataManager : MonoBehaviour
         
         petHealth.Initialize(uiManager, timeManager);
         petAge.Initialize(uiManager);
-        timeManager.Initialize(petAge, petHealth);
+        timeManager.Initialize(petAge, petHealth, petBehavior);
         petBehavior.Initialize(availablePositionsParent);
     }
 }

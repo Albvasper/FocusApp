@@ -16,6 +16,8 @@ public class TimeManager : MonoBehaviour
     private bool alreadyDamagedPet = false;
     private PetHealth petHealth;
     private PetAge petAge;
+    private PetBehavior petBehavior;
+
     private UiManager uiManager;
     private LeafManager leafManager;
     
@@ -23,6 +25,13 @@ public class TimeManager : MonoBehaviour
     {
         uiManager = GetComponent<UiManager>();
         leafManager = GetComponent<LeafManager>();
+    }
+    
+    public void Initialize(PetAge petAge, PetHealth petHealth, PetBehavior petBehavior)
+    {
+        this.petAge = petAge;
+        this.petHealth = petHealth;
+        this.petBehavior = petBehavior;
     }
 
     // Called when application is running on background 
@@ -66,18 +75,13 @@ public class TimeManager : MonoBehaviour
             petHealth.TakeDamage();
         StopAllCoroutines();
     }
-
-    public void Initialize(PetAge petAge, PetHealth petHealth)
-    {
-        this.petAge = petAge;
-        this.petHealth = petHealth;
-    }
     
     public void InitializeTimer(float timeGoal)
     {
         // Make the phone not go to sleep automatically
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
         
+        petBehavior.SetState(State.Focusing);
         timeRemaining = timeGoal;
         isFocused = true;
         StopAllCoroutines();
@@ -87,6 +91,7 @@ public class TimeManager : MonoBehaviour
     public void CancelFocus()
     {
         isFocused = false;
+        petBehavior.SetState(State.IDLE);
         StopAllCoroutines();
         petHealth.TakeDamage();
     }
@@ -94,6 +99,7 @@ public class TimeManager : MonoBehaviour
     public void StopTimer()
     {
         isFocused = false;
+        petBehavior.SetState(State.IDLE);
         StopAllCoroutines();
     }
 
@@ -127,5 +133,6 @@ public class TimeManager : MonoBehaviour
     {
         isFocused = false;
         leafManager.AddLeafs(amount);
+        petBehavior.SetState(State.IDLE);
     }
 }

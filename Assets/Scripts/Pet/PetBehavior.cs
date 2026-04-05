@@ -2,6 +2,12 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
+public enum State
+{
+    IDLE,
+    Focusing
+}
+
 public class PetBehavior : MonoBehaviour
 {
     private const float MovementCooldownMin = 1f;
@@ -9,6 +15,7 @@ public class PetBehavior : MonoBehaviour
 
     public bool CanMove = true;
 
+    private State currentState = State.IDLE;
     private List<Vector3> availablePositions = new();
     private Vector3 targetPosition;
     private float cooldown = 0f;
@@ -28,6 +35,35 @@ public class PetBehavior : MonoBehaviour
     
     private void FixedUpdate()
     {
+        switch (currentState)
+        {
+            case State.IDLE: IDLEBehavior(); break;
+
+            case State.Focusing: FocusingBehavior(); break;   
+        }
+    }
+
+    public void Initialize(GameObject availablePositionsParent)
+    {
+        foreach (Transform child in availablePositionsParent.transform)
+        {
+            availablePositions.Add(child.position);
+        }
+    }
+
+    /// <summary>
+    /// Change current state of pet
+    /// </summary>
+    /// <param name="state">New state</param>
+    public void SetState(State state)
+    {
+        currentState = state;
+    }
+
+    // When movement cooldown is expired, pick a random point and walk to it.
+    private void IDLEBehavior()
+    {
+        PetAnimator.IsIDLEing();
         if (CanMove)
         {
             counter += Time.deltaTime;
@@ -42,14 +78,12 @@ public class PetBehavior : MonoBehaviour
         }
     }
 
-    public void Initialize(GameObject availablePositionsParent)
+    private void FocusingBehavior()
     {
-        foreach (Transform child in availablePositionsParent.transform)
-        {
-            availablePositions.Add(child.position);
-        }
+        PetAnimator.IsFocusing();
     }
 
+    // Move pet to a target position
     private IEnumerator Walk(Vector3 targetPosition)
     {
         Vector3 startingPosition = transform.position;
@@ -65,7 +99,6 @@ public class PetBehavior : MonoBehaviour
         }
         transform.position = targetPosition;
         PetAnimator.IsIDLEing();
-
     }
 
 }
