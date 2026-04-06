@@ -33,6 +33,7 @@ public class UiManager : MonoBehaviour
     [SerializeField] private GameObject hudScreen;
     [SerializeField] private GameObject deadPetScreen;
     [SerializeField] private GameObject successScreen;
+    [SerializeField] private GameObject failureScreen;
 
     private TimeManager timeManager;
     private Vector3 timerStartingPosition;
@@ -129,6 +130,7 @@ public class UiManager : MonoBehaviour
         focusScreenBG.SetActive(true);
         successScreen.SetActive(false);
         cancelButton.SetActive(false);
+        failureScreen.SetActive(false);
         timerText.text = "05:00";
         timeSlider.value = 0;
     }
@@ -137,9 +139,17 @@ public class UiManager : MonoBehaviour
     {
         // TODO: Window confirming that the user wants to cancel focus
         ShowHUD();
-        timeManager.CancelFocus();
+        timeManager.CancelFocusSession();
         timerText.text = "05:00";
         timeSlider.value = 0;
+    }
+
+
+    public void ShowFailureScreen()
+    {
+        AudioManager.Instance.PlayGameOverSFX();
+        failureScreen.SetActive(true);
+        timerScreen.SetActive(false);
     }
 
     public void ShowSucessScreen()
@@ -162,6 +172,7 @@ public class UiManager : MonoBehaviour
         hudScreen.SetActive(false);
         deadPetScreen.SetActive(false);
         successScreen.SetActive(false);
+        failureScreen.SetActive(false);
     }
 
     public void UpdateLevelPellets(int currentAge)

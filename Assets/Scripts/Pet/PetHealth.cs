@@ -65,7 +65,7 @@ public class PetHealth : MonoBehaviour
     public void Die()
     {
         behavior.CanMove = false;
-        timeManager.StopTimer();
+        timeManager.CancelFocusSession();
         uiManager.HideUI();
         PlaceWingsAndHalo();
         StartCoroutine(DeathAnimation());

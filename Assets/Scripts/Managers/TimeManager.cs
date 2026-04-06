@@ -8,16 +8,13 @@ public class TimeManager : MonoBehaviour
 {
     private const float RewardRate = 60f;            // Give reward every x seconds.
 
-    [Header("Timer components")]
-    [SerializeField] private float timeGoal;
-    [SerializeField] private float timeRemaining;
     public bool isFocused = false;
 
-    private bool alreadyDamagedPet = false;
+    private float timeGoal;
+    private float timeRemaining;
     private PetHealth petHealth;
     private PetAge petAge;
     private PetBehavior petBehavior;
-
     private UiManager uiManager;
     private LeafManager leafManager;
     
@@ -37,12 +34,11 @@ public class TimeManager : MonoBehaviour
     // Called when application is running on background 
     private void OnApplicationPause(bool isPaused)
     {
-        if (isPaused && isFocused && !alreadyDamagedPet)
+        if (isPaused && isFocused)
         {
             // App moved to background when on focused mode
             Debug.Log("USER IS NOT FOCUSED!");
-            alreadyDamagedPet = true;
-            petHealth.TakeDamage();
+            CancelFocusSession();
         } else
         {
             OnApplicationResume();
@@ -51,12 +47,12 @@ public class TimeManager : MonoBehaviour
 
     private void OnApplicationFocus(bool focus)
     {
-        if (isFocused && !focus && !alreadyDamagedPet)
+        if (isFocused && !focus)
         {
             Debug.Log("USER IS NOT FOCUSED!");
-            alreadyDamagedPet = true;
             // App moved to background when on focused mode
-            petHealth.TakeDamage();
+            uiManager.ShowFailureScreen();
+            CancelFocusSession();
         } else
         {
             OnApplicationResume();
@@ -65,14 +61,16 @@ public class TimeManager : MonoBehaviour
 
     private void OnApplicationResume()
     {
-        alreadyDamagedPet = false;
+        //alreadyDamagedPet = false;
     }
 
     // Called when user closes the application
     private void OnApplicationQuit()
     {
         if (isFocused)
-            petHealth.TakeDamage();
+        {
+            CancelFocusSession();
+        }
         StopAllCoroutines();
     }
     
@@ -88,19 +86,13 @@ public class TimeManager : MonoBehaviour
         StartCoroutine(Timer());
     }
 
-    public void CancelFocus()
+    public void CancelFocusSession()
     {
         isFocused = false;
         petBehavior.SetState(State.IDLE);
         StopAllCoroutines();
-        petHealth.TakeDamage();
-    }
-
-    public void StopTimer()
-    {
-        isFocused = false;
-        petBehavior.SetState(State.IDLE);
-        StopAllCoroutines();
+        uiManager.ShowFailureScreen();
+        //petHealth.TakeDamage();
     }
 
     // Count seconds and keep count of rewards
