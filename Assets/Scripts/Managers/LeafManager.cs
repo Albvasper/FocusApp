@@ -5,7 +5,7 @@ using UnityEngine;
 /// </summary>
 public class LeafManager : MonoBehaviour
 {
-    private int leafs = 0;
+    public int Leafs = 0;
     private UiManager uiManager;
     
     private void Awake()
@@ -15,13 +15,13 @@ public class LeafManager : MonoBehaviour
 
     public void AddLeafs(int amount)
     {
-        leafs += amount;
-        uiManager.UpdateLeafCounterText(leafs);
+        Leafs += amount;
+        uiManager.UpdateLeafCounterText(Leafs);
     }
     
     public void SubstractLeafs(int amount)
     {
-        leafs -= amount;
-        uiManager.UpdateLeafCounterText(leafs);
+        Leafs -= amount;
+        uiManager.UpdateLeafCounterText(Leafs);
     }
 }
