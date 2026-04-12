@@ -16,7 +16,37 @@ public class EditModeManager : MonoBehaviour
                 - click on X to get out of edit mode
     */
 
-    public bool EditingEnabled { get ; set; } = false;
+    public bool EditingEnabled { get ; private set; } = false;
+
+    [SerializeField] private Color standardBGColor;
+    [SerializeField] private Color editModeBGColor;
+
+    private GameObject pet;
+    private Camera mainCamera;
+
+    private void Awake() 
+    {
+        mainCamera = Camera.main;    
+    }
+
+    public void Initialize(GameObject pet)
+    {
+        this.pet = pet;
+    }
+
+    public void EnterEditMode()
+    {
+        pet.SetActive(false);
+        EditingEnabled = true;
+        mainCamera.backgroundColor = editModeBGColor;
+    }
+    
+    public void ExitEditMode()
+    {
+        pet.SetActive(true);
+        EditingEnabled = false;
+        mainCamera.backgroundColor = standardBGColor;
+    }
 
     public void DeployItem(DecorativeItem decoration)
     {

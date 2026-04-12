@@ -215,13 +215,13 @@ public class UiManager : MonoBehaviour
 
     public void EnableEditMode()
     {
-        editModeManager.EditingEnabled = true;
+        editModeManager.EnterEditMode();
         editModeScreen.SetActive(true);
     }
 
     public void QuitEditMode()
     {
-        editModeManager.EditingEnabled = false;
+        editModeManager.ExitEditMode();
         editModeScreen.SetActive(false);
     }
     

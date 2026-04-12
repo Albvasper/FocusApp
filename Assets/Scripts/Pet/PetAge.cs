@@ -9,7 +9,6 @@ public class PetAge : MonoBehaviour
     [SerializeField] private Sprite standardPetSprite;
     [SerializeField] private Sprite oldPetSprite;
 
-
     private PetHealth health;
     private UiManager uiManager;
     private SpriteRenderer spriteRenderer;

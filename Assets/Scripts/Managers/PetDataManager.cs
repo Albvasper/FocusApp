@@ -26,6 +26,7 @@ public class PetDataManager : MonoBehaviour
     private PetHealth petHealth;
     private UiManager uiManager;
     private TimeManager timeManager;
+    private EditModeManager editModeManager;
 
     private void Awake()
     {
@@ -40,6 +41,7 @@ public class PetDataManager : MonoBehaviour
         }
         uiManager = GetComponent<UiManager>();
         timeManager = GetComponent<TimeManager>();
+        editModeManager = GetComponent<EditModeManager>();
         LoadData();
     }
     
@@ -108,5 +110,6 @@ public class PetDataManager : MonoBehaviour
         petAge.Initialize(uiManager);
         timeManager.Initialize(petAge, petHealth, petBehavior);
         petBehavior.Initialize(availablePositionsParent);
+        editModeManager.Initialize(petHealth.gameObject);
     }
 }

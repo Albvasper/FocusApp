@@ -78,7 +78,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 690295421
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -1801735411788782058, guid: bcc7ec9bedce0374da40abeed7767fc9, type: 3}
@@ -177,7 +177,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 690295421
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 2063988466907017193, guid: 4896d1fb3a6bd194ead2c21c115f8072, type: 3}
@@ -290,9 +290,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LifeStage: 0
   Age: 0
-  babyPetSprite: {fileID: 6176987515741772644, guid: 92de2389b734dfa4a93eaeef4d8b32ca, type: 3}
-  standardPetSprite: {fileID: 4693792977596894205, guid: 96a044cd5d725214b855f9d0c9d2508b, type: 3}
-  oldPetSprite: {fileID: -7269834052441622955, guid: 0eb3406fce2ff5b4986e1eee8d0ae0d6, type: 3}
+  babyPetSprite: {fileID: 2063988466907017193, guid: 4896d1fb3a6bd194ead2c21c115f8072, type: 3}
+  standardPetSprite: {fileID: 2063988466907017193, guid: 4896d1fb3a6bd194ead2c21c115f8072, type: 3}
+  oldPetSprite: {fileID: 2063988466907017193, guid: 4896d1fb3a6bd194ead2c21c115f8072, type: 3}
 --- !u!114 &7699714309358547050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -383,7 +383,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 690295421
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -5303247421530120293, guid: b0c0c5f42d1b8954b8c31c6a9d9ec6ba, type: 3}
