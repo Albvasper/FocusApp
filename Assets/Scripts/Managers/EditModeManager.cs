@@ -16,8 +16,13 @@ public class EditModeManager : MonoBehaviour
                 - click on X to get out of edit mode
     */
 
+    public bool EditingEnabled { get ; set; } = false;
+
     public void DeployItem(DecorativeItem decoration)
     {
-        Instantiate(decoration.item, Vector3.zero, Quaternion.identity);
+        DecorationObject decorationObject;
+        GameObject decorationObjectGO = Instantiate(decoration.item, Vector3.zero, Quaternion.identity);
+        decorationObject = decorationObjectGO.GetComponent<DecorationObject>();
+        decorationObject.Initialize(this);
     }
 }

@@ -18,7 +18,7 @@ public class ShopManager : MonoBehaviour
         if (leafManager.Leafs >= item.cost)
         {
             editModeManager.DeployItem(item);
-            leafManager.Leafs -= item.cost;
+            leafManager.SubstractLeafs(item.cost);
             uiManager.ShowHUD();
         }
     }

@@ -34,17 +34,20 @@ public class UiManager : MonoBehaviour
     [SerializeField] private GameObject deadPetScreen;
     [SerializeField] private GameObject successScreen;
     [SerializeField] private GameObject failureScreen;
+    [SerializeField] private GameObject editModeScreen;
 
     [Header("Dock Components")]
     [SerializeField] private RectTransform dock;
 
     private float dockDefaultPositionY = -1151.39f;
     private TimeManager timeManager;
+    private EditModeManager editModeManager;
     private Vector3 timerStartingPosition;
 
     private void Awake()
     {
         timeManager = GetComponent<TimeManager>();
+        editModeManager = GetComponent<EditModeManager>();
         timerStartingPosition = timerComponents.transform.localPosition;
         ClearLevelPellets();
     }
@@ -210,6 +213,18 @@ public class UiManager : MonoBehaviour
         dock.anchoredPosition = new Vector2(dock.anchoredPosition.x, dockDefaultPositionY);
     }
 
+    public void EnableEditMode()
+    {
+        editModeManager.EditingEnabled = true;
+        editModeScreen.SetActive(true);
+    }
+
+    public void QuitEditMode()
+    {
+        editModeManager.EditingEnabled = false;
+        editModeScreen.SetActive(false);
+    }
+    
     private IEnumerator MoveFocusUI()
     {
         float elapsed = 0f;
