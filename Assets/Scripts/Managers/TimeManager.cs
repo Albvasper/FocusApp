@@ -10,7 +10,7 @@ public class TimeManager : MonoBehaviour
 
     public bool isFocused = false;
 
-    [SerializeField] private UiManager uiManager;
+    [SerializeField] private ScreenManagerUI screenManagerUI;
     [SerializeField] private TimerManagerUI timerManagerUI;
     
     private float timeRemaining;
@@ -86,8 +86,7 @@ public class TimeManager : MonoBehaviour
         petBehavior.SetState(State.IDLE);
         StopAllCoroutines();
         timerManagerUI.HideFocusScreen();
-        uiManager.ShowFailureScreen();
-        //petHealth.TakeDamage();
+        screenManagerUI.ShowFailureScreen();
     }
 
     // Count seconds and keep count of rewards
@@ -113,7 +112,7 @@ public class TimeManager : MonoBehaviour
                 break;
         }
         GiveRewards(rewardAmount);
-        uiManager.ShowSucessScreen();
+        screenManagerUI.ShowSucessScreen();
     }
 
     private void GiveRewards(int amount)

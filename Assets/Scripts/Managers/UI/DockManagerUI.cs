@@ -8,7 +8,6 @@ public class DockManagerUI : MonoBehaviour
     [SerializeField] private RectTransform dock;
     [SerializeField] private GameObject shopScreen;
     [SerializeField] private GameObject journalScreen;
-    [SerializeField] private GameObject editModeScreen;
     [SerializeField] private EditModeManager editModeManager;
 
     private float dockDefaultPositionY = -1151.39f;
@@ -38,12 +37,10 @@ public class DockManagerUI : MonoBehaviour
     public void EnableEditMode()
     {
         editModeManager.EnterEditMode();
-        editModeScreen.SetActive(true);
     }
 
     public void QuitEditMode()
     {
         editModeManager.ExitEditMode();
-        editModeScreen.SetActive(false);
     }
 }

@@ -3,6 +3,7 @@ using UnityEngine;
 public class ShopManager : MonoBehaviour
 {
     [SerializeField] private DockManagerUI dockManagerUI;
+    
     private LeafManager leafManager;
     private EditModeManager editModeManager;
 

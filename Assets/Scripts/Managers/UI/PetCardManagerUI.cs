@@ -8,9 +8,9 @@ using UnityEngine.UI;
 public class PetCardManagerUI : MonoBehaviour
 {
     [Header("HUD Components")]
+    [SerializeField] private GameObject petCard;
     [SerializeField] private TextMeshProUGUI petNameText;
     [SerializeField] private TextMeshProUGUI deadPetNameText;
-    [SerializeField] private GameObject petCard;
     [SerializeField] private Image petProfilePicture;
 
     [Header("Pet bars")]
@@ -21,6 +21,16 @@ public class PetCardManagerUI : MonoBehaviour
     {
         SetName(PetDataManager.Instance.Data.PetName);
         ClearLevelPellets();
+    }
+
+    public void ShowPetCard()
+    {
+        petCard.SetActive(true);
+    }
+
+    public void HidePetCard()
+    {
+        petCard.SetActive(false);
     }
 
     public void UpdateHealthBar(int currentHealth, int maxHealth)

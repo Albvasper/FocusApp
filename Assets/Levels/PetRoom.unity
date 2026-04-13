@@ -1139,9 +1139,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1019321522}
-        m_TargetAssemblyTypeName: UiManager, Assembly-CSharp
-        m_MethodName: ShowHUD
+      - m_Target: {fileID: 1019321525}
+        m_TargetAssemblyTypeName: ScreenManagerUI, Assembly-CSharp
+        m_MethodName: ShowMainScreen
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2475,7 +2475,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -0.000009253621, y: -2232.5}
+  m_AnchoredPosition: {x: -0.000009253621, y: -569.008}
   m_SizeDelta: {x: 862, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &446017279
@@ -3033,7 +3033,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFocused: 0
-  uiManager: {fileID: 1019321522}
+  screenManagerUI: {fileID: 1019321525}
   timerManagerUI: {fileID: 1019321524}
 --- !u!4 &574985118
 Transform:
@@ -3101,7 +3101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc95f596b2ac7254a86864fe1eceded6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LeafManager
-  uiManager: {fileID: 1019321522}
+  leafManagerUI: {fileID: 1019321526}
 --- !u!114 &574985123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3114,7 +3114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6a5ca0de339c084d87f148ef84b9bee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShopManager
-  dockManagerUI: {fileID: 0}
+  dockManagerUI: {fileID: 1019321521}
 --- !u!114 &574985124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5464,7 +5464,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 602754327}
   m_HandleRect: {fileID: 602754326}
   m_Direction: 2
-  m_Value: 0.9999999
+  m_Value: 0.50000006
   m_Size: 0.25487462
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -5911,10 +5911,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1019321520}
-  - component: {fileID: 1019321522}
+  - component: {fileID: 1019321525}
   - component: {fileID: 1019321523}
   - component: {fileID: 1019321521}
   - component: {fileID: 1019321524}
+  - component: {fileID: 1019321526}
   m_Layer: 0
   m_Name: UI Manager
   m_TagString: Untagged
@@ -5952,25 +5953,7 @@ MonoBehaviour:
   dock: {fileID: 1156228044}
   shopScreen: {fileID: 418842570}
   journalScreen: {fileID: 2032719802}
-  editModeScreen: {fileID: 726008514}
   editModeManager: {fileID: 574985124}
---- !u!114 &1019321522
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1019321519}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a5e901efabaae14faf6a03b1e437ddb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  leafCounterText: {fileID: 1724478937}
-  hudScreen: {fileID: 122639243}
-  deadPetScreen: {fileID: 917542997}
-  successScreen: {fileID: 983739005}
-  failureScreen: {fileID: 1841365675}
 --- !u!114 &1019321523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5983,9 +5966,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f5d0306b3f09914793d5ad3f190cc81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PetCardManagerUI
+  petCard: {fileID: 1098882385}
   petNameText: {fileID: 1704253280}
   deadPetNameText: {fileID: 1715743901}
-  petCard: {fileID: 1098882385}
   petProfilePicture: {fileID: 1559928938}
   healthBar: {fileID: 722600798}
   levelPellets:
@@ -6019,6 +6002,36 @@ MonoBehaviour:
   timerComponents: {fileID: 1512608253}
   cancelButton: {fileID: 647013709}
   timeManager: {fileID: 574985117}
+--- !u!114 &1019321525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019321519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f80ae213257fc384fb55808e865b4db4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScreenManagerUI
+  mainScreen: {fileID: 122639243}
+  successScreen: {fileID: 983739005}
+  failureScreen: {fileID: 1841365675}
+  editModeScreen: {fileID: 726008514}
+--- !u!114 &1019321526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019321519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0aca4caae6953f4ea5c5e7069d4702d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LeafCounterUI
+  leafCounterCard: {fileID: 1883857245}
+  leafCounterText: {fileID: 1724478937}
 --- !u!1 &1062670693
 GameObject:
   m_ObjectHideFlags: 0
@@ -6116,6 +6129,42 @@ MonoBehaviour:
       - m_Target: {fileID: 1019321521}
         m_TargetAssemblyTypeName: DockManager, Assembly-CSharp
         m_MethodName: QuitEditMode
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1019321525}
+        m_TargetAssemblyTypeName: ScreenManagerUI, Assembly-CSharp
+        m_MethodName: HideEditModeScreen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1019321523}
+        m_TargetAssemblyTypeName: PetCardManagerUI, Assembly-CSharp
+        m_MethodName: ShowPetCard
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1019321526}
+        m_TargetAssemblyTypeName: LeafManagerUI, Assembly-CSharp
+        m_MethodName: ShowLeafCounterCard
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7413,9 +7462,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UiManager, Assembly-CSharp
-        m_MethodName: ShowHUD
+      - m_Target: {fileID: 1019321525}
+        m_TargetAssemblyTypeName: ScreenManagerUI, Assembly-CSharp
+        m_MethodName: ShowMainScreen
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8182,6 +8231,42 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1019321525}
+        m_TargetAssemblyTypeName: ScreenManagerUI, Assembly-CSharp
+        m_MethodName: HideEditModeScreen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1019321526}
+        m_TargetAssemblyTypeName: LeafManagerUI, Assembly-CSharp
+        m_MethodName: ShowLeafCounterCard
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1019321523}
+        m_TargetAssemblyTypeName: PetCardManagerUI, Assembly-CSharp
+        m_MethodName: ShowPetCard
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1277138288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8360,6 +8445,42 @@ MonoBehaviour:
       - m_Target: {fileID: 1019321521}
         m_TargetAssemblyTypeName: DockManager, Assembly-CSharp
         m_MethodName: QuitEditMode
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1019321525}
+        m_TargetAssemblyTypeName: ScreenManagerUI, Assembly-CSharp
+        m_MethodName: HideEditModeScreen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1019321526}
+        m_TargetAssemblyTypeName: LeafManagerUI, Assembly-CSharp
+        m_MethodName: ShowLeafCounterCard
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1019321523}
+        m_TargetAssemblyTypeName: PetCardManagerUI, Assembly-CSharp
+        m_MethodName: ShowPetCard
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10280,9 +10401,45 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1019321525}
+        m_TargetAssemblyTypeName: ScreenManagerUI, Assembly-CSharp
+        m_MethodName: ShowEditModeScreen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1019321521}
         m_TargetAssemblyTypeName: DockManager, Assembly-CSharp
         m_MethodName: EnableEditMode
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1019321523}
+        m_TargetAssemblyTypeName: PetCardManagerUI, Assembly-CSharp
+        m_MethodName: HidePetCard
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1019321526}
+        m_TargetAssemblyTypeName: LeafManagerUI, Assembly-CSharp
+        m_MethodName: HideLeafCounterCard
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10607,9 +10764,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1019321522}
-        m_TargetAssemblyTypeName: UiManager, Assembly-CSharp
-        m_MethodName: HideUI
+      - m_Target: {fileID: 1019321525}
+        m_TargetAssemblyTypeName: ScreenManagerUI, Assembly-CSharp
+        m_MethodName: HideMainScreen
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11726,9 +11883,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1019321522}
-        m_TargetAssemblyTypeName: UiManager, Assembly-CSharp
-        m_MethodName: ShowHUD
+      - m_Target: {fileID: 1019321525}
+        m_TargetAssemblyTypeName: ScreenManagerUI, Assembly-CSharp
+        m_MethodName: ShowMainScreen
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13008,9 +13165,45 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1019321525}
+        m_TargetAssemblyTypeName: ScreenManagerUI, Assembly-CSharp
+        m_MethodName: HideEditModeScreen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 574985121}
         m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: PlayClickSFX
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1019321523}
+        m_TargetAssemblyTypeName: PetCardManagerUI, Assembly-CSharp
+        m_MethodName: ShowPetCard
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1019321526}
+        m_TargetAssemblyTypeName: LeafManagerUI, Assembly-CSharp
+        m_MethodName: ShowLeafCounterCard
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

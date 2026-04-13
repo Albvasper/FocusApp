@@ -7,22 +7,22 @@ public class LeafManager : MonoBehaviour
 {
     public int Leafs { get; private set; } = 999;
 
-    [SerializeField] private UiManager uiManager;
+    [SerializeField] private LeafManagerUI leafManagerUI;
 
     public void Start()
     {
-        uiManager.UpdateLeafCounterText(Leafs);
+        leafManagerUI.UpdateLeafCounterText(Leafs);
     }
 
     public void AddLeafs(int amount)
     {
         Leafs += amount;
-        uiManager.UpdateLeafCounterText(Leafs);
+        leafManagerUI.UpdateLeafCounterText(Leafs);
     }
     
     public void SubstractLeafs(int amount)
     {
         Leafs -= amount;
-        uiManager.UpdateLeafCounterText(Leafs);
+        leafManagerUI.UpdateLeafCounterText(Leafs);
     }
 }
