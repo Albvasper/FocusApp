@@ -19,12 +19,12 @@ public class PetDataManager : MonoBehaviour
     [SerializeField] private GameObject sharkPetPrefab;
 
     [Header("Components")]
+    [SerializeField] private UiManager uiManager;
     [SerializeField] private GameObject availablePositionsParent;
 
     private PetAge petAge;
     private PetBehavior petBehavior;
     private PetHealth petHealth;
-    private UiManager uiManager;
     private TimeManager timeManager;
     private EditModeManager editModeManager;
 
@@ -39,7 +39,6 @@ public class PetDataManager : MonoBehaviour
         {
             Instance = this;
         }
-        uiManager = GetComponent<UiManager>();
         timeManager = GetComponent<TimeManager>();
         editModeManager = GetComponent<EditModeManager>();
         LoadData();

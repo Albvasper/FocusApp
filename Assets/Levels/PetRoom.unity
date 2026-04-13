@@ -339,7 +339,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 574985119}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UiManager, Assembly-CSharp
         m_MethodName: BuyNewEgg
         m_Mode: 1
@@ -1138,7 +1138,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 574985119}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UiManager, Assembly-CSharp
         m_MethodName: ShowHUD
         m_Mode: 1
@@ -2144,7 +2144,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 574985119}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UiManager, Assembly-CSharp
         m_MethodName: ShowTimerScreen
         m_Mode: 1
@@ -3009,7 +3009,6 @@ GameObject:
   - component: {fileID: 574985120}
   - component: {fileID: 574985117}
   - component: {fileID: 574985122}
-  - component: {fileID: 574985119}
   - component: {fileID: 574985121}
   - component: {fileID: 574985123}
   - component: {fileID: 574985124}
@@ -3048,48 +3047,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &574985119
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 574985116}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a5e901efabaae14faf6a03b1e437ddb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthBar: {fileID: 722600798}
-  levelPellets:
-  - {fileID: 290988309}
-  - {fileID: 276939422}
-  - {fileID: 1233970985}
-  - {fileID: 1552768376}
-  - {fileID: 1785533511}
-  - {fileID: 720685929}
-  - {fileID: 1232838137}
-  - {fileID: 482693740}
-  - {fileID: 1443027839}
-  - {fileID: 1165284112}
-  petNameText: {fileID: 1704253280}
-  deadPetNameText: {fileID: 1715743901}
-  petCard: {fileID: 1098882385}
-  petProfilePicture: {fileID: 1559928938}
-  leafCounterText: {fileID: 1724478937}
-  timeSlider: {fileID: 735303366}
-  timerText: {fileID: 1165755018}
-  focusScreenInteractables: {fileID: 1712674144}
-  focusScreenBG: {fileID: 629625879}
-  timerComponents: {fileID: 1512608253}
-  cancelButton: {fileID: 647013709}
-  timerScreen: {fileID: 26415170}
-  hudScreen: {fileID: 122639243}
-  deadPetScreen: {fileID: 917542997}
-  successScreen: {fileID: 983739005}
-  failureScreen: {fileID: 1841365675}
-  editModeScreen: {fileID: 726008514}
-  dock: {fileID: 1156228044}
 --- !u!114 &574985120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3107,6 +3064,7 @@ MonoBehaviour:
   bearPetPrefab: {fileID: 2366472102063391354, guid: eefaab64f1fa4ce4ea400a056da77d6e, type: 3}
   frogPetPrefab: {fileID: 2366472102063391354, guid: 362c88d29c1adca49bb9b048c6ea0852, type: 3}
   sharkPetPrefab: {fileID: 2366472102063391354, guid: cccee7b09020fb240a95afdca8106dd4, type: 3}
+  uiManager: {fileID: 1019321522}
   availablePositionsParent: {fileID: 1454519044}
 --- !u!114 &574985121
 MonoBehaviour:
@@ -3140,6 +3098,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc95f596b2ac7254a86864fe1eceded6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LeafManager
+  uiManager: {fileID: 1019321522}
 --- !u!114 &574985123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3152,6 +3111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6a5ca0de339c084d87f148ef84b9bee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShopManager
+  dockManager: {fileID: 1019321521}
 --- !u!114 &574985124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3998,7 +3958,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 574985119}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UiManager, Assembly-CSharp
         m_MethodName: CancelFocus
         m_Mode: 1
@@ -4695,7 +4655,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 574985119}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UiManager, Assembly-CSharp
         m_MethodName: OnSliderValueChanged
         m_Mode: 1
@@ -5501,8 +5461,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 602754327}
   m_HandleRect: {fileID: 602754326}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.2548746
+  m_Value: 0.9999999
+  m_Size: 0.25487462
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -5939,6 +5899,96 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3647053078908945418, guid: 0e0e91d414d975542972ffbf4ccd5352, type: 3}
   m_PrefabInstance: {fileID: 1010510879}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1019321519
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1019321520}
+  - component: {fileID: 1019321522}
+  - component: {fileID: 1019321521}
+  m_Layer: 0
+  m_Name: UI Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1019321520
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019321519}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1019321521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019321519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4f59fa6730ab2f45a41042d346184e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DockManager
+  dock: {fileID: 1156228044}
+  shopScreen: {fileID: 418842570}
+  journalScreen: {fileID: 2032719802}
+  editModeScreen: {fileID: 574985116}
+  editModeManager: {fileID: 574985124}
+--- !u!114 &1019321522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019321519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5e901efabaae14faf6a03b1e437ddb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBar: {fileID: 722600798}
+  levelPellets:
+  - {fileID: 290988309}
+  - {fileID: 276939422}
+  - {fileID: 1233970985}
+  - {fileID: 1552768376}
+  - {fileID: 1785533511}
+  - {fileID: 720685929}
+  - {fileID: 1232838137}
+  - {fileID: 482693740}
+  - {fileID: 1443027839}
+  - {fileID: 1165284112}
+  petNameText: {fileID: 1704253280}
+  deadPetNameText: {fileID: 1715743901}
+  petCard: {fileID: 1098882385}
+  petProfilePicture: {fileID: 1559928938}
+  leafCounterText: {fileID: 1724478937}
+  timeSlider: {fileID: 735303366}
+  timerText: {fileID: 1165755018}
+  focusScreenInteractables: {fileID: 1712674144}
+  focusScreenBG: {fileID: 629625879}
+  timerComponents: {fileID: 1512608253}
+  cancelButton: {fileID: 647013709}
+  timerScreen: {fileID: 26415170}
+  hudScreen: {fileID: 122639243}
+  deadPetScreen: {fileID: 917542997}
+  successScreen: {fileID: 983739005}
+  failureScreen: {fileID: 1841365675}
 --- !u!1 &1062670693
 GameObject:
   m_ObjectHideFlags: 0
@@ -6021,8 +6071,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 574985119}
-        m_TargetAssemblyTypeName: UiManager, Assembly-CSharp
+      - m_Target: {fileID: 1019321521}
+        m_TargetAssemblyTypeName: DockManager, Assembly-CSharp
         m_MethodName: HideDock
         m_Mode: 1
         m_Arguments:
@@ -6033,8 +6083,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 574985119}
-        m_TargetAssemblyTypeName: UiManager, Assembly-CSharp
+      - m_Target: {fileID: 1019321521}
+        m_TargetAssemblyTypeName: DockManager, Assembly-CSharp
         m_MethodName: QuitEditMode
         m_Mode: 1
         m_Arguments:
@@ -6133,7 +6183,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 0
 --- !u!4 &1069968653
 Transform:
@@ -6685,6 +6735,7 @@ RectTransform:
   - {fileID: 1304656568}
   - {fileID: 2120198273}
   - {fileID: 418842571}
+  - {fileID: 2032719803}
   m_Father: {fileID: 122639244}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -7297,7 +7348,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 574985119}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UiManager, Assembly-CSharp
         m_MethodName: ShowHUD
         m_Mode: 1
@@ -8030,8 +8081,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 574985119}
-        m_TargetAssemblyTypeName: UiManager, Assembly-CSharp
+      - m_Target: {fileID: 1019321521}
+        m_TargetAssemblyTypeName: DockManager, Assembly-CSharp
         m_MethodName: ExpandDock
         m_Mode: 1
         m_Arguments:
@@ -8042,8 +8093,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 574985119}
-        m_TargetAssemblyTypeName: UiManager, Assembly-CSharp
+      - m_Target: {fileID: 1019321521}
+        m_TargetAssemblyTypeName: DockManager, Assembly-CSharp
+        m_MethodName: ShowStoreScreen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1019321521}
+        m_TargetAssemblyTypeName: DockManager, Assembly-CSharp
         m_MethodName: QuitEditMode
         m_Mode: 1
         m_Arguments:
@@ -8205,8 +8268,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 574985119}
-        m_TargetAssemblyTypeName: UiManager, Assembly-CSharp
+      - m_Target: {fileID: 1019321521}
+        m_TargetAssemblyTypeName: DockManager, Assembly-CSharp
         m_MethodName: ExpandDock
         m_Mode: 1
         m_Arguments:
@@ -8217,8 +8280,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 574985119}
-        m_TargetAssemblyTypeName: UiManager, Assembly-CSharp
+      - m_Target: {fileID: 1019321521}
+        m_TargetAssemblyTypeName: DockManager, Assembly-CSharp
+        m_MethodName: ShowJournalScreen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1019321521}
+        m_TargetAssemblyTypeName: DockManager, Assembly-CSharp
         m_MethodName: QuitEditMode
         m_Mode: 1
         m_Arguments:
@@ -8304,8 +8379,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -81.234375}
-  m_SizeDelta: {x: 985.24084, y: 162.47302}
+  m_AnchoredPosition: {x: 0, y: -121.26}
+  m_SizeDelta: {x: 985.241, y: 242.52}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1304656569
 MonoBehaviour:
@@ -10128,9 +10203,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 574985119}
-        m_TargetAssemblyTypeName: UiManager, Assembly-CSharp
-        m_MethodName: EnableEditMode
+      - m_Target: {fileID: 1019321521}
+        m_TargetAssemblyTypeName: DockManager, Assembly-CSharp
+        m_MethodName: HideDock
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10140,9 +10215,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 574985119}
-        m_TargetAssemblyTypeName: UiManager, Assembly-CSharp
-        m_MethodName: HideDock
+      - m_Target: {fileID: 1019321521}
+        m_TargetAssemblyTypeName: DockManager, Assembly-CSharp
+        m_MethodName: EnableEditMode
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10443,7 +10518,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 574985119}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UiManager, Assembly-CSharp
         m_MethodName: OnTimerStart
         m_Mode: 1
@@ -11550,7 +11625,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 574985119}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UiManager, Assembly-CSharp
         m_MethodName: ShowHUD
         m_Mode: 1
@@ -12832,7 +12907,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 574985119}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UiManager, Assembly-CSharp
         m_MethodName: QuitEditMode
         m_Mode: 1
@@ -13031,6 +13106,41 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1969567848}
   m_CullTransparentMesh: 1
+--- !u!1 &2032719802
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2032719803}
+  m_Layer: 5
+  m_Name: Journal Tab
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &2032719803
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2032719802}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1156228044}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -121.26996}
+  m_SizeDelta: {x: 862.303, y: 1138.015}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2077182777
 GameObject:
   m_ObjectHideFlags: 0
@@ -13666,6 +13776,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 574985118}
+  - {fileID: 1019321520}
   - {fileID: 1113230200}
   - {fileID: 519420032}
   - {fileID: 619394802}

@@ -5,13 +5,9 @@ using UnityEngine;
 /// </summary>
 public class LeafManager : MonoBehaviour
 {
-    public int Leafs { get; private set; }= 999;
-    private UiManager uiManager;
-    
-    private void Awake()
-    {
-        uiManager = GetComponent<UiManager>();
-    }
+    public int Leafs { get; private set; } = 999;
+
+    [SerializeField] private UiManager uiManager;
 
     public void Start()
     {
