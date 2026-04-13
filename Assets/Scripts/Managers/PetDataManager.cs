@@ -19,7 +19,7 @@ public class PetDataManager : MonoBehaviour
     [SerializeField] private GameObject sharkPetPrefab;
 
     [Header("Components")]
-    [SerializeField] private UiManager uiManager;
+    [SerializeField] private PetCardManagerUI petCardManagerUI;
     [SerializeField] private GameObject availablePositionsParent;
 
     private PetAge petAge;
@@ -105,8 +105,8 @@ public class PetDataManager : MonoBehaviour
         if (petAge == null) return;
         if (petBehavior == null) return;
         
-        petHealth.Initialize(uiManager, timeManager);
-        petAge.Initialize(uiManager);
+        petHealth.Initialize(petCardManagerUI, timeManager);
+        petAge.Initialize(petCardManagerUI);
         timeManager.Initialize(petAge, petHealth, petBehavior);
         petBehavior.Initialize(availablePositionsParent);
         editModeManager.Initialize(petHealth.gameObject);

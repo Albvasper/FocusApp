@@ -1,8 +1,10 @@
 using UnityEngine;
 
-public class DockManager : MonoBehaviour
+/// <summary>
+/// Swaps dock screens and handles dock button functionalities.
+/// </summary>
+public class DockManagerUI : MonoBehaviour
 {
-
     [SerializeField] private RectTransform dock;
     [SerializeField] private GameObject shopScreen;
     [SerializeField] private GameObject journalScreen;

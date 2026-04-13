@@ -10,7 +10,7 @@ public class PetAge : MonoBehaviour
     [SerializeField] private Sprite oldPetSprite;
 
     private PetHealth health;
-    private UiManager uiManager;
+    private PetCardManagerUI petCardManagerUI;
     private SpriteRenderer spriteRenderer;
 
     private void Awake()
@@ -24,30 +24,30 @@ public class PetAge : MonoBehaviour
         if (LifeStage > PetData.MaxLifeStage) health.Die();
     }
 
-    public void Initialize(UiManager uiManager)
+    public void Initialize(PetCardManagerUI petCardManagerUI)
     {
-        this.uiManager = uiManager;
+        this.petCardManagerUI = petCardManagerUI;
     }
 
     public void SetAge(int currentAge)
     {
         Age = currentAge;
         Evolve();
-        uiManager.UpdateLevelPellets(Age);
+        petCardManagerUI.UpdateLevelPellets(Age);
     }
 
     public void MakePetAge()
     {
         Age++;
-        uiManager.UpdateLevelPellets(Age);
+        petCardManagerUI.UpdateLevelPellets(Age);
         PetDataManager.Instance.SaveAge(Age);
         if (Age >= PetData.MaxAge)
         {
             Age = 0;
             LifeStage++;
             Evolve();
-            uiManager.ClearLevelPellets();
-            uiManager.UpdateLevelPellets(Age);
+            petCardManagerUI.ClearLevelPellets();
+            petCardManagerUI.UpdateLevelPellets(Age);
             PetDataManager.Instance.SaveAge(Age);
             PetDataManager.Instance.SaveLifeStage(LifeStage);
             if (LifeStage >= PetData.MaxLifeStage)
@@ -62,15 +62,15 @@ public class PetAge : MonoBehaviour
         {
             case 1: 
                 spriteRenderer.sprite = babyPetSprite; 
-                uiManager.AssignProfilePicture(babyPetSprite);
+                petCardManagerUI.AssignProfilePicture(babyPetSprite);
             break;
             case 2: 
                 spriteRenderer.sprite = standardPetSprite; 
-                uiManager.AssignProfilePicture(standardPetSprite);
+                petCardManagerUI.AssignProfilePicture(standardPetSprite);
             break;
             default: 
                 spriteRenderer.sprite = oldPetSprite; 
-                uiManager.AssignProfilePicture(oldPetSprite);
+                petCardManagerUI.AssignProfilePicture(oldPetSprite);
             break;
         }
     }

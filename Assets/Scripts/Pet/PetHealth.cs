@@ -12,7 +12,7 @@ public class PetHealth : MonoBehaviour
     [SerializeField] private GameObject wings;
 
     private int maxHealth = PetData.MaxHealth;
-    private UiManager uiManager;
+    private PetCardManagerUI petCardManagerUI;
     private TimeManager timeManager;
     private PetBehavior behavior;
 
@@ -29,16 +29,16 @@ public class PetHealth : MonoBehaviour
         if (health <= 0) Die();
     }
     
-    public void Initialize(UiManager uiManager, TimeManager timeManager)
+    public void Initialize(PetCardManagerUI petCardManagerUI, TimeManager timeManager)
     {
-        this.uiManager = uiManager;
+        this.petCardManagerUI = petCardManagerUI;
         this.timeManager = timeManager;
     }
 
     public void SetHealth(int currentHealth)
     {
         health = currentHealth;
-        uiManager.UpdateHealthBar(health, maxHealth);
+        petCardManagerUI.UpdateHealthBar(health, maxHealth);
     }   
 
     public void Heal()
@@ -47,7 +47,7 @@ public class PetHealth : MonoBehaviour
         {
             health++;
             PetDataManager.Instance.SaveHealth(health);
-            uiManager.UpdateHealthBar(health, maxHealth);
+            petCardManagerUI.UpdateHealthBar(health, maxHealth);
         }
     }
 
@@ -55,7 +55,7 @@ public class PetHealth : MonoBehaviour
     {
         health--;
         PetDataManager.Instance.SaveHealth(health);
-        uiManager.UpdateHealthBar(health, maxHealth);
+        petCardManagerUI.UpdateHealthBar(health, maxHealth);
         if (health <= 0)
         {
             Die();
@@ -66,7 +66,7 @@ public class PetHealth : MonoBehaviour
     {
         behavior.CanMove = false;
         timeManager.CancelFocusSession();
-        uiManager.HideUI();
+        //petCardManagerUI.HideUI();
         PlaceWingsAndHalo();
         StartCoroutine(DeathAnimation());
         AudioManager.Instance.PlayHeavenlyChoir();
@@ -92,6 +92,6 @@ public class PetHealth : MonoBehaviour
             yield return null;
         }
         gameObject.SetActive(false);
-        uiManager.ShowDeadPetScreen();
+        //petCardManagerUI.ShowDeadPetScreen();
     }
 }

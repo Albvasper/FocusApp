@@ -2474,7 +2474,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -0.000009253621, y: -2232.5}
+  m_AnchoredPosition: {x: -0.000009253621, y: -569.008}
   m_SizeDelta: {x: 862, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &446017279
@@ -3064,7 +3064,7 @@ MonoBehaviour:
   bearPetPrefab: {fileID: 2366472102063391354, guid: eefaab64f1fa4ce4ea400a056da77d6e, type: 3}
   frogPetPrefab: {fileID: 2366472102063391354, guid: 362c88d29c1adca49bb9b048c6ea0852, type: 3}
   sharkPetPrefab: {fileID: 2366472102063391354, guid: cccee7b09020fb240a95afdca8106dd4, type: 3}
-  uiManager: {fileID: 1019321522}
+  petCardManagerUI: {fileID: 1019321523}
   availablePositionsParent: {fileID: 1454519044}
 --- !u!114 &574985121
 MonoBehaviour:
@@ -3111,7 +3111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6a5ca0de339c084d87f148ef84b9bee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShopManager
-  dockManager: {fileID: 1019321521}
+  dockManagerUI: {fileID: 0}
 --- !u!114 &574985124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5461,7 +5461,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 602754327}
   m_HandleRect: {fileID: 602754326}
   m_Direction: 2
-  m_Value: 0.9999999
+  m_Value: 0.50000006
   m_Size: 0.25487462
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -5909,6 +5909,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1019321520}
   - component: {fileID: 1019321522}
+  - component: {fileID: 1019321523}
   - component: {fileID: 1019321521}
   m_Layer: 0
   m_Name: UI Manager
@@ -5961,22 +5962,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a5e901efabaae14faf6a03b1e437ddb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 722600798}
-  levelPellets:
-  - {fileID: 290988309}
-  - {fileID: 276939422}
-  - {fileID: 1233970985}
-  - {fileID: 1552768376}
-  - {fileID: 1785533511}
-  - {fileID: 720685929}
-  - {fileID: 1232838137}
-  - {fileID: 482693740}
-  - {fileID: 1443027839}
-  - {fileID: 1165284112}
-  petNameText: {fileID: 1704253280}
-  deadPetNameText: {fileID: 1715743901}
-  petCard: {fileID: 1098882385}
-  petProfilePicture: {fileID: 1559928938}
   leafCounterText: {fileID: 1724478937}
   timeSlider: {fileID: 735303366}
   timerText: {fileID: 1165755018}
@@ -5989,6 +5974,34 @@ MonoBehaviour:
   deadPetScreen: {fileID: 917542997}
   successScreen: {fileID: 983739005}
   failureScreen: {fileID: 1841365675}
+--- !u!114 &1019321523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019321519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f5d0306b3f09914793d5ad3f190cc81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PetCardManagerUI
+  petNameText: {fileID: 1704253280}
+  deadPetNameText: {fileID: 1715743901}
+  petCard: {fileID: 1098882385}
+  petProfilePicture: {fileID: 1559928938}
+  healthBar: {fileID: 722600798}
+  levelPellets:
+  - {fileID: 290988309}
+  - {fileID: 276939422}
+  - {fileID: 1233970985}
+  - {fileID: 1552768376}
+  - {fileID: 1785533511}
+  - {fileID: 720685929}
+  - {fileID: 1232838137}
+  - {fileID: 482693740}
+  - {fileID: 1443027839}
+  - {fileID: 1165284112}
 --- !u!1 &1062670693
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,15 +9,6 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class UiManager : MonoBehaviour
 {
-    [Header("Pet bars")]
-    [SerializeField] private Image healthBar;
-    [SerializeField] private LevelPellet[] levelPellets;
-
-    [Header("HUD Components")]
-    [SerializeField] private TextMeshProUGUI petNameText;
-    [SerializeField] private TextMeshProUGUI deadPetNameText;
-    [SerializeField] private GameObject petCard;
-    [SerializeField] private Image petProfilePicture;
     [SerializeField] private TextMeshProUGUI leafCounterText;
 
     [Header("Timer Components")]
@@ -42,12 +33,10 @@ public class UiManager : MonoBehaviour
     {
         timeManager = GetComponent<TimeManager>();
         timerStartingPosition = timerComponents.transform.localPosition;
-        ClearLevelPellets();
     }
 
     private void Start()
     {
-        SetName(PetDataManager.Instance.Data.PetName);
         ShowHUD();
     }
 
@@ -92,11 +81,6 @@ public class UiManager : MonoBehaviour
         leafCounterText.text = leafAmount.ToString();
     }
 
-    public void UpdateHealthBar(int currentHealth, int maxHealth)
-    {
-        healthBar.fillAmount = (float)currentHealth/maxHealth;
-    }
-
     public void ShowTimerScreen()
     {
         timerComponents.transform.localPosition = timerStartingPosition;
@@ -124,7 +108,7 @@ public class UiManager : MonoBehaviour
     public void ShowHUD()
     {
         //HideDock();
-        petCard.SetActive(true);
+        //petCard.SetActive(true);
         hudScreen.SetActive(true);
         timerScreen.SetActive(false);
         focusScreenInteractables.SetActive(true);
@@ -167,33 +151,12 @@ public class UiManager : MonoBehaviour
 
     public void HideUI()
     {
-        petCard.SetActive(false);
+        //petCard.SetActive(false);
         timerScreen.SetActive(false);
         hudScreen.SetActive(false);
         deadPetScreen.SetActive(false);
         successScreen.SetActive(false);
         failureScreen.SetActive(false);
-    }
-
-    public void UpdateLevelPellets(int currentAge)
-    {
-        for (int i = 0; i < currentAge; i++)
-        {
-            levelPellets[i].ShowPellet();
-        }
-    }
-
-    public void ClearLevelPellets()
-    {
-        foreach (LevelPellet pellet in levelPellets)
-        {
-            pellet.HidePellet();
-        }
-    }
-
-    public void AssignProfilePicture(Sprite petSprite)
-    {
-        petProfilePicture.sprite = petSprite;
     }
     
     private IEnumerator MoveFocusUI()
@@ -210,11 +173,5 @@ public class UiManager : MonoBehaviour
                 Vector3.Lerp(timerStartingPosition, targetPosition, time);
             yield return null;
         }
-    }
-        
-    private void SetName(string petName)
-    {
-        petNameText.text = petName;
-        deadPetNameText.text = petName + " has died!";
     }
 }

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ShopManager : MonoBehaviour
 {
-    [SerializeField] private DockManager dockManager;
+    [SerializeField] private DockManagerUI dockManagerUI;
     private LeafManager leafManager;
     private EditModeManager editModeManager;
 
@@ -18,7 +18,7 @@ public class ShopManager : MonoBehaviour
         {
             editModeManager.DeployItem(item);
             leafManager.SubstractLeafs(item.cost);
-            dockManager.HideDock();
+            dockManagerUI.HideDock();
         }
     }
 }
