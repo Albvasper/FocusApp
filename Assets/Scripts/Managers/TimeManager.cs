@@ -10,19 +10,14 @@ public class TimeManager : MonoBehaviour
 
     public bool isFocused = false;
 
-    private float timeGoal;
+    [SerializeField] private UiManager uiManager;
+    [SerializeField] private TimerManagerUI timerManagerUI;
+    
     private float timeRemaining;
     private PetHealth petHealth;
     private PetAge petAge;
     private PetBehavior petBehavior;
-    private UiManager uiManager;
     private LeafManager leafManager;
-    
-    private void Awake()
-    {
-        uiManager = GetComponent<UiManager>();
-        leafManager = GetComponent<LeafManager>();
-    }
     
     public void Initialize(PetAge petAge, PetHealth petHealth, PetBehavior petBehavior)
     {
@@ -51,7 +46,6 @@ public class TimeManager : MonoBehaviour
         {
             Debug.Log("USER IS NOT FOCUSED!");
             // App moved to background when on focused mode
-            uiManager.ShowFailureScreen();
             CancelFocusSession();
         } else
         {
@@ -91,6 +85,7 @@ public class TimeManager : MonoBehaviour
         isFocused = false;
         petBehavior.SetState(State.IDLE);
         StopAllCoroutines();
+        timerManagerUI.HideFocusScreen();
         uiManager.ShowFailureScreen();
         //petHealth.TakeDamage();
     }
@@ -107,7 +102,7 @@ public class TimeManager : MonoBehaviour
             yield return new WaitForSeconds(1f);
             rewardCounter++;
             timeRemaining--;
-            uiManager.UpdateTimerText(timeRemaining);
+            timerManagerUI.UpdateTimerText(timeRemaining);
 
             if (rewardCounter >= RewardRate)
             {

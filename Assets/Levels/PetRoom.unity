@@ -673,6 +673,7 @@ RectTransform:
   - {fileID: 1098882386}
   - {fileID: 1883857246}
   - {fileID: 122639244}
+  - {fileID: 1170262490}
   - {fileID: 726008515}
   - {fileID: 26415171}
   - {fileID: 917542998}
@@ -1138,7 +1139,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1019321522}
         m_TargetAssemblyTypeName: UiManager, Assembly-CSharp
         m_MethodName: ShowHUD
         m_Mode: 1
@@ -2144,8 +2145,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UiManager, Assembly-CSharp
+      - m_Target: {fileID: 1019321524}
+        m_TargetAssemblyTypeName: TimerManagerUI, Assembly-CSharp
         m_MethodName: ShowTimerScreen
         m_Mode: 1
         m_Arguments:
@@ -2474,7 +2475,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -0.000009253621, y: -569.008}
+  m_AnchoredPosition: {x: -0.000009253621, y: -2232.5}
   m_SizeDelta: {x: 862, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &446017279
@@ -3032,6 +3033,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFocused: 0
+  uiManager: {fileID: 1019321522}
+  timerManagerUI: {fileID: 1019321524}
 --- !u!4 &574985118
 Transform:
   m_ObjectHideFlags: 0
@@ -3958,8 +3961,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UiManager, Assembly-CSharp
+      - m_Target: {fileID: 1019321524}
+        m_TargetAssemblyTypeName: TimerManagerUI, Assembly-CSharp
         m_MethodName: CancelFocus
         m_Mode: 1
         m_Arguments:
@@ -4655,8 +4658,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UiManager, Assembly-CSharp
+      - m_Target: {fileID: 1019321524}
+        m_TargetAssemblyTypeName: TimerManagerUI, Assembly-CSharp
         m_MethodName: OnSliderValueChanged
         m_Mode: 1
         m_Arguments:
@@ -5461,7 +5464,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 602754327}
   m_HandleRect: {fileID: 602754326}
   m_Direction: 2
-  m_Value: 0.50000006
+  m_Value: 0.9999999
   m_Size: 0.25487462
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -5911,6 +5914,7 @@ GameObject:
   - component: {fileID: 1019321522}
   - component: {fileID: 1019321523}
   - component: {fileID: 1019321521}
+  - component: {fileID: 1019321524}
   m_Layer: 0
   m_Name: UI Manager
   m_TagString: Untagged
@@ -5948,7 +5952,7 @@ MonoBehaviour:
   dock: {fileID: 1156228044}
   shopScreen: {fileID: 418842570}
   journalScreen: {fileID: 2032719802}
-  editModeScreen: {fileID: 574985116}
+  editModeScreen: {fileID: 726008514}
   editModeManager: {fileID: 574985124}
 --- !u!114 &1019321522
 MonoBehaviour:
@@ -5963,13 +5967,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   leafCounterText: {fileID: 1724478937}
-  timeSlider: {fileID: 735303366}
-  timerText: {fileID: 1165755018}
-  focusScreenInteractables: {fileID: 1712674144}
-  focusScreenBG: {fileID: 629625879}
-  timerComponents: {fileID: 1512608253}
-  cancelButton: {fileID: 647013709}
-  timerScreen: {fileID: 26415170}
   hudScreen: {fileID: 122639243}
   deadPetScreen: {fileID: 917542997}
   successScreen: {fileID: 983739005}
@@ -6002,6 +5999,26 @@ MonoBehaviour:
   - {fileID: 482693740}
   - {fileID: 1443027839}
   - {fileID: 1165284112}
+--- !u!114 &1019321524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019321519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a177e56ee908ad048b32ed49ad7866f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TimerManagerUI
+  timerScreen: {fileID: 26415170}
+  timeSlider: {fileID: 735303366}
+  timerText: {fileID: 1165755018}
+  focusScreenInteractables: {fileID: 1712674144}
+  focusScreenBG: {fileID: 629625879}
+  timerComponents: {fileID: 1512608253}
+  cancelButton: {fileID: 647013709}
+  timeManager: {fileID: 574985117}
 --- !u!1 &1062670693
 GameObject:
   m_ObjectHideFlags: 0
@@ -7112,6 +7129,41 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1 &1170262489
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1170262490}
+  m_Layer: 5
+  m_Name: ---
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1170262490
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1170262489}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 116278224}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1186283066
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10531,8 +10583,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UiManager, Assembly-CSharp
+      - m_Target: {fileID: 1019321524}
+        m_TargetAssemblyTypeName: TimerManagerUI, Assembly-CSharp
         m_MethodName: OnTimerStart
         m_Mode: 1
         m_Arguments:
@@ -10546,6 +10598,18 @@ MonoBehaviour:
       - m_Target: {fileID: 574985121}
         m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: PlayClickSFX
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1019321522}
+        m_TargetAssemblyTypeName: UiManager, Assembly-CSharp
+        m_MethodName: HideUI
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11638,9 +11702,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UiManager, Assembly-CSharp
-        m_MethodName: ShowHUD
+      - m_Target: {fileID: 1019321524}
+        m_TargetAssemblyTypeName: TimerManagerUI, Assembly-CSharp
+        m_MethodName: HideFocusScreen
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11653,6 +11717,18 @@ MonoBehaviour:
       - m_Target: {fileID: 574985121}
         m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: PlayClickSFX
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1019321522}
+        m_TargetAssemblyTypeName: UiManager, Assembly-CSharp
+        m_MethodName: ShowHUD
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12920,8 +12996,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UiManager, Assembly-CSharp
+      - m_Target: {fileID: 1019321521}
+        m_TargetAssemblyTypeName: DockManagerUI, Assembly-CSharp
         m_MethodName: QuitEditMode
         m_Mode: 1
         m_Arguments:

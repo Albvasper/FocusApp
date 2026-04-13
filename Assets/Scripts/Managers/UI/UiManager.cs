@@ -11,85 +11,20 @@ public class UiManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI leafCounterText;
 
-    [Header("Timer Components")]
-    [SerializeField] private Slider timeSlider;
-    [SerializeField] private TextMeshProUGUI timerText;
-    [SerializeField] private GameObject focusScreenInteractables;
-    [SerializeField] private GameObject focusScreenBG;
-    [SerializeField] private GameObject timerComponents;
-    [SerializeField] private GameObject cancelButton;
-
     [Header("Screens")]
-    [SerializeField] private GameObject timerScreen;
     [SerializeField] private GameObject hudScreen;
     [SerializeField] private GameObject deadPetScreen;
     [SerializeField] private GameObject successScreen;
     [SerializeField] private GameObject failureScreen;
-
-    private TimeManager timeManager;
-    private Vector3 timerStartingPosition;
-
-    private void Awake()
-    {
-        timeManager = GetComponent<TimeManager>();
-        timerStartingPosition = timerComponents.transform.localPosition;
-    }
 
     private void Start()
     {
         ShowHUD();
     }
 
-    /// <summary>
-    /// Initializes timer and hide setup UI components.
-    /// </summary>
-    public void OnTimerStart()
-    {
-        timeManager.InitializeTimer(timeSlider.value);
-        StartCoroutine(MoveFocusUI());
-
-        focusScreenInteractables.SetActive(false);
-        focusScreenBG.SetActive(false);
-        cancelButton.SetActive(true);
-        //focusPetInfoWindow.SetActive(true);
-    }
-    
-    /// <summary>
-    /// Updates the timer text.
-    /// </summary>
-    public void OnSliderValueChanged()
-    {
-        // Snap knob every 5 minutes
-        float snapped = Mathf.Round(timeSlider.value / 300f) * 300f;
-        timeSlider.SetValueWithoutNotify(snapped);
-        UpdateTimerText(snapped);
-    }
-
-    /// <summary>
-    /// Converts seconds left to minutes and seconds and displays it on the UI.
-    /// </summary>
-    /// <param name="timeToDisplay">Seconds to convert to minutes and seconds.</param>
-    public void UpdateTimerText(float timeToDisplay)
-    {
-        float minutes = Mathf.FloorToInt(timeToDisplay / 60); 
-        float seconds = Mathf.FloorToInt(timeToDisplay % 60);
-        timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
-    }
-
     public void UpdateLeafCounterText(int leafAmount)
     {
         leafCounterText.text = leafAmount.ToString();
-    }
-
-    public void ShowTimerScreen()
-    {
-        timerComponents.transform.localPosition = timerStartingPosition;
-        //focusPetInfoWindow.SetActive(false);
-        hudScreen.SetActive(false);
-        timerScreen.SetActive(true);
-        focusScreenInteractables.SetActive(true);
-        focusScreenBG.SetActive(true);
-        cancelButton.SetActive(false);
     }
     
     public void ShowDeadPetScreen()
@@ -97,12 +32,12 @@ public class UiManager : MonoBehaviour
         AudioManager.Instance.PlayGameOverSFX();
         deadPetScreen.SetActive(true);
         hudScreen.SetActive(false);
-        timerScreen.SetActive(false);
-        focusScreenInteractables.SetActive(false);
-        focusScreenBG.SetActive(false);
-        cancelButton.SetActive(false);
-        timerText.text = "05:00";
-        timeSlider.value = 0;
+        //timerScreen.SetActive(false);
+        //focusScreenInteractables.SetActive(false);
+        //focusScreenBG.SetActive(false);
+        //cancelButton.SetActive(false);
+        //timerText.text = "05:00";
+        //timeSlider.value = 0;
     }
 
     public void ShowHUD()
@@ -110,37 +45,28 @@ public class UiManager : MonoBehaviour
         //HideDock();
         //petCard.SetActive(true);
         hudScreen.SetActive(true);
-        timerScreen.SetActive(false);
-        focusScreenInteractables.SetActive(true);
-        focusScreenBG.SetActive(true);
+        //timerScreen.SetActive(false);
+        //focusScreenInteractables.SetActive(true);
+        //focusScreenBG.SetActive(true);
         successScreen.SetActive(false);
-        cancelButton.SetActive(false);
+        //cancelButton.SetActive(false);
         failureScreen.SetActive(false);
-        timerText.text = "05:00";
-        timeSlider.value = 0;
-    }
-
-    public void CancelFocus()
-    {
-        // TODO: Window confirming that the user wants to cancel focus
-        ShowHUD();
-        timeManager.CancelFocusSession();
-        timerText.text = "05:00";
-        timeSlider.value = 0;
+        //timerText.text = "05:00";
+        //timeSlider.value = 0;
     }
 
     public void ShowFailureScreen()
     {
         AudioManager.Instance.PlayGameOverSFX();
         failureScreen.SetActive(true);
-        timerScreen.SetActive(false);
+        //timerScreen.SetActive(false);
     }
 
     public void ShowSucessScreen()
     {
         AudioManager.Instance.PlaySuccessSFX();
         successScreen.SetActive(true);
-        timerScreen.SetActive(false);
+        //timerScreen.SetActive(false);
     }
 
     public void BuyNewEgg()
@@ -152,26 +78,10 @@ public class UiManager : MonoBehaviour
     public void HideUI()
     {
         //petCard.SetActive(false);
-        timerScreen.SetActive(false);
+        //timerScreen.SetActive(false);
         hudScreen.SetActive(false);
         deadPetScreen.SetActive(false);
         successScreen.SetActive(false);
         failureScreen.SetActive(false);
-    }
-    
-    private IEnumerator MoveFocusUI()
-    {
-        float elapsed = 0f;
-        const float Duration = 1f;
-        Vector3 targetPosition = new(0f, -417f, 0f);
-
-        while (elapsed < Duration)
-        {
-            elapsed += Time.deltaTime;
-            float time = elapsed / Duration;
-            timerComponents.transform.localPosition = 
-                Vector3.Lerp(timerStartingPosition, targetPosition, time);
-            yield return null;
-        }
     }
 }
