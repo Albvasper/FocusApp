@@ -1,6 +1,9 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// When the user opens the app it will check if a pet was assigned or not.
+/// </summary>
 public class CheckPetAssigned : MonoBehaviour
 {
     [SerializeField] private PetData data;
@@ -17,6 +20,6 @@ public class CheckPetAssigned : MonoBehaviour
         if (data.PetAssinged)
             SceneManager.LoadScene("PetRoom");
         else
-            SceneManager.LoadScene("EggHatchingRoom");
+            SceneManager.LoadScene("Onboarding");
     }
 }
