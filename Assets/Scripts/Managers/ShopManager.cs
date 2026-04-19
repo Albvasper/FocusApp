@@ -3,10 +3,11 @@ using UnityEngine;
 public class ShopManager : MonoBehaviour
 {
     [SerializeField] private DockManagerUI dockManagerUI;
+    [SerializeField] private PricingManagerUI pricingManagerUI;
     
     private LeafManager leafManager;
     private EditModeManager editModeManager;
-
+    
     private void Awake() 
     {
         leafManager = GetComponent<LeafManager>();    
@@ -15,6 +16,12 @@ public class ShopManager : MonoBehaviour
 
     public void TryBuyingItem(DecorativeItem item)
     {
+        if (item.locked && !pricingManagerUI.SubscribedToPomePlus)
+        {
+            pricingManagerUI.ShowPricingScreen();
+            return;    
+        }
+
         if (leafManager.Leafs >= item.cost)
         {
             editModeManager.DeployItem(item);

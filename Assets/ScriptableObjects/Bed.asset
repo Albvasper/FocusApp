@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b42bd5bfd812c2a499bd32f1198aedfc, type: 3}
   m_Name: Bed
   m_EditorClassIdentifier: Assembly-CSharp::DecorativeItem
+  locked: 1
   cost: 500
   item: {fileID: 414780148861425835, guid: 6ef541d158095364da41ad356ec3ff57, type: 3}
