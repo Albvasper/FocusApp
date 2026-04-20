@@ -14,7 +14,7 @@ public class PricingManagerUI : MonoBehaviour
     public void Start()
     {
         SubscribedToPomePlus = false;
-        ShowPricingScreen();
+        HidePricingScreen();
         SelectMonthlyPlan();
     }
     
