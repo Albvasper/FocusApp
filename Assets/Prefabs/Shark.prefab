@@ -86,7 +86,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 690295421
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 4733775716228321093, guid: 5664e52a198909f47a4aac241bafe935, type: 3}
@@ -199,9 +199,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LifeStage: 0
   Age: 0
-  babyPetSprite: {fileID: 8139920967987118930, guid: 701110286a90f664f8f97c01bdca9433, type: 3}
-  standardPetSprite: {fileID: 5746764926269108267, guid: f1222617a780ce74aa9747814200f3f1, type: 3}
-  oldPetSprite: {fileID: -8921027504883116673, guid: 96bda8d2ffcfdb741819fb35f673edcc, type: 3}
+  babyPetSprite: {fileID: 4733775716228321093, guid: 5664e52a198909f47a4aac241bafe935, type: 3}
+  standardPetSprite: {fileID: 4733775716228321093, guid: 5664e52a198909f47a4aac241bafe935, type: 3}
+  oldPetSprite: {fileID: 4733775716228321093, guid: 5664e52a198909f47a4aac241bafe935, type: 3}
 --- !u!114 &3503838671576076715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -292,7 +292,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 690295421
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -1801735411788782058, guid: bcc7ec9bedce0374da40abeed7767fc9, type: 3}
@@ -383,7 +383,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 690295421
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -5303247421530120293, guid: b0c0c5f42d1b8954b8c31c6a9d9ec6ba, type: 3}
