@@ -6,16 +6,18 @@ using UnityEngine.EventSystems;
 /// </summary>
 public class DecorationObject : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler, ISelectHandler, IDeselectHandler
 {
+    public SpriteRenderer SpriteRenderer { get; private set; }
+    public string ID;
+    
     private Vector3 offset;
     private GameObject canvas;
     private EditModeManager editModeManager;
-    private SpriteRenderer spriteRenderer;
     private Camera mainCamera;
 
     private void Awake()
     {
         mainCamera = Camera.main;
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        SpriteRenderer = GetComponent<SpriteRenderer>();
         canvas = transform.GetChild(0).gameObject;
     }
 
@@ -79,9 +81,9 @@ public class DecorationObject : MonoBehaviour, IPointerDownHandler, IDragHandler
     /// </summary>
     public void FlipDecoration()
     {
-        if (spriteRenderer.flipX)
-            spriteRenderer.flipX = false;
+        if (SpriteRenderer.flipX)
+            SpriteRenderer.flipX = false;
         else
-            spriteRenderer.flipX = true;
+            SpriteRenderer.flipX = true;
     }
 }

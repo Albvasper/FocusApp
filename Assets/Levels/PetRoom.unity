@@ -4921,7 +4921,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RewardManager
   DailyRewardAmount: 15
   rewardManagerUI: {fileID: 1019321528}
-  lastDate: 0
 --- !u!114 &574985126
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4940,6 +4939,25 @@ MonoBehaviour:
   petSpawnPoint: {fileID: 1904213042}
   availablePositionsParent: {fileID: 1454519044}
   petCardManagerUI: {fileID: 1019321523}
+  decorativeItems:
+  - {fileID: 11400000, guid: 684e517dbc51b7d46972d0b738103606, type: 2}
+  - {fileID: 11400000, guid: 21f42c36ccce5f8469ae65bcdc55ce91, type: 2}
+  - {fileID: 11400000, guid: 9fd190e3441bd4244bee195d0707738c, type: 2}
+  - {fileID: 11400000, guid: ddc23966aab98a5418ae598941810ddb, type: 2}
+  - {fileID: 11400000, guid: d8c71c4288b20ca4dbdd8e21d665b719, type: 2}
+  - {fileID: 11400000, guid: d964e838e648ad946a16fd28986e0b53, type: 2}
+  - {fileID: 11400000, guid: 07aacb82777821943ab2b6015ecd112d, type: 2}
+  - {fileID: 11400000, guid: bf62fcaf953b64b4ea75eada36100c40, type: 2}
+  - {fileID: 11400000, guid: b9901d6c8fdfe3d449e4d26ecae92adc, type: 2}
+  - {fileID: 11400000, guid: 9fa4881050fe87c488c95a750f9a9eb4, type: 2}
+  - {fileID: 11400000, guid: 269097c4b88ccc24b9202e39ebd6dbeb, type: 2}
+  - {fileID: 11400000, guid: 7dbfefb85a6bbf34e84073e2952c75fd, type: 2}
+  - {fileID: 11400000, guid: a20388c074a391744bb8161ce21ab197, type: 2}
+  - {fileID: 11400000, guid: 7d64e2b422edfce468585194d88b3bcc, type: 2}
+  - {fileID: 11400000, guid: 8f1c5febd45e14b428e37cae7e4952bf, type: 2}
+  - {fileID: 11400000, guid: fd5a291d21f306b41886acac59b709f8, type: 2}
+  - {fileID: 11400000, guid: 031bb6941c6da6843b00bf1a6ded877f, type: 2}
+  - {fileID: 11400000, guid: 0f675fe15a2b92b429d15372a4f5e120, type: 2}
 --- !u!1 &586383899
 GameObject:
   m_ObjectHideFlags: 0

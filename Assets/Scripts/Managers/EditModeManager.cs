@@ -52,7 +52,9 @@ public class EditModeManager : MonoBehaviour
     {
         DecorationObject decorationObject;
         GameObject decorationObjectGO = Instantiate(decoration.item, Vector3.zero, Quaternion.identity);
+        
         decorationObject = decorationObjectGO.GetComponent<DecorationObject>();
         decorationObject.Initialize(this);
+        SaveManager.Instance.SaveDecoration(decorationObject);
     }
 }

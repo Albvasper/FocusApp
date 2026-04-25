@@ -1,7 +1,9 @@
 using System.IO;
 using UnityEngine;
+using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 
+//TODO: Separate load logic from save manager
 /// <summary>
 /// Saves and loads pet data.  
 /// </summary>
@@ -18,6 +20,8 @@ public class SaveManager : MonoBehaviour
     [SerializeField] private GameObject availablePositionsParent;
     [Header("UI Managers")]
     [SerializeField] private PetCardManagerUI petCardManagerUI;
+    [Header("Decoration Prefabs")]
+    [SerializeField] private List<DecorativeItem> decorativeItems = new();
 
     private string saveLocation;
     private GameData data;
@@ -75,7 +79,19 @@ public class SaveManager : MonoBehaviour
 
     public void SaveLastCheckIn(int date)
     {
-        data.lastDateCheckIn = date;
+        data.LastDateCheckIn = date;
+        File.WriteAllText(saveLocation, JsonUtility.ToJson(data));
+    }
+
+    public void SaveDecoration(DecorationObject decoration)
+    {
+        data.Decorations.Add(new()
+        {
+            ID = decoration.ID,
+            X = decoration.transform.position.x,
+            Y = decoration.transform.position.y,
+            Flipped = decoration.SpriteRenderer.flipX
+        });
         File.WriteAllText(saveLocation, JsonUtility.ToJson(data));
     }
 
@@ -90,9 +106,10 @@ public class SaveManager : MonoBehaviour
     {
         petCardManagerUI.SetName(data.PetName);
         leafManager.SetLeafs(data.CurrentLeafs);
-        rewardManager.SetLastDateCheckIn(data.lastDateCheckIn);
+        rewardManager.SetLastDateCheckIn(data.LastDateCheckIn);
         rewardManager.CheckForDailyReward();
         SpawnPet(data.Type);
+        LoadDecorations();
     }
 
     // Instantiate pet GO and get components from it
@@ -132,5 +149,22 @@ public class SaveManager : MonoBehaviour
         timeManager.Initialize(petBehavior);
         petBehavior.Initialize(availablePositionsParent);
         editModeManager.Initialize(pet);
+    }
+    
+    private void LoadDecorations()
+    {
+        foreach (DecorationData decorationData in data.Decorations)
+        {
+            DecorativeItem item = decorativeItems.Find(i => i.name == decorationData.ID);
+
+            if (item == null) 
+                continue;
+
+            DecorationObject decorationObject;
+            GameObject decorationObjectGO = 
+                Instantiate(item.item, new Vector3(decorationData.X, decorationData.Y, 0f), Quaternion.identity);
+            decorationObject = decorationObjectGO.GetComponent<DecorationObject>();
+            decorationObject.Initialize(editModeManager);
+        }
     }
 }

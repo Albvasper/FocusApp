@@ -29,7 +29,9 @@ public class OnBoardingManager : MonoBehaviour
             Type = petTypePicked,
             PetName = petNamePicked.text,
             CurrentLeafs = 0,
-            lastDateCheckIn = System.DateTime.Now.Day
+            LastDateCheckIn = System.DateTime.Now.Day,
+            Decorations = new()
+            
         };
         File.WriteAllText(saveLocation, JsonUtility.ToJson(data));
     }

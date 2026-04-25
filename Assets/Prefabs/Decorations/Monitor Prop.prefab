@@ -152,6 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cbe35ee112e63a4cb68c31869579f82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DecorationObject
+  ID: Monitor
 --- !u!1 &6411217780254026138
 GameObject:
   m_ObjectHideFlags: 0

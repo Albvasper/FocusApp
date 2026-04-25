@@ -152,6 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cbe35ee112e63a4cb68c31869579f82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DecorationObject
+  ID: LavaLamp
 --- !u!1 &4806717535719567971
 GameObject:
   m_ObjectHideFlags: 0
