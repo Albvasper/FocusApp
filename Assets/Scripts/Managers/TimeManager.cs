@@ -14,15 +14,11 @@ public class TimeManager : MonoBehaviour
     [SerializeField] private TimerManagerUI timerManagerUI;
     
     private float timeRemaining;
-    private PetHealth petHealth;
-    private PetAge petAge;
     private PetBehavior petBehavior;
     private LeafManager leafManager;
     
-    public void Initialize(PetAge petAge, PetHealth petHealth, PetBehavior petBehavior)
+    public void Initialize(PetBehavior petBehavior)
     {
-        this.petAge = petAge;
-        this.petHealth = petHealth;
         this.petBehavior = petBehavior;
     }
 
@@ -32,7 +28,6 @@ public class TimeManager : MonoBehaviour
         if (isPaused && isFocused)
         {
             // App moved to background when on focused mode
-            Debug.Log("USER IS NOT FOCUSED!");
             CancelFocusSession();
         } else
         {
@@ -44,7 +39,6 @@ public class TimeManager : MonoBehaviour
     {
         if (isFocused && !focus)
         {
-            Debug.Log("USER IS NOT FOCUSED!");
             // App moved to background when on focused mode
             CancelFocusSession();
         } else
@@ -53,10 +47,7 @@ public class TimeManager : MonoBehaviour
         }
     }
 
-    private void OnApplicationResume()
-    {
-        //alreadyDamagedPet = false;
-    }
+    private void OnApplicationResume() {}
 
     // Called when user closes the application
     private void OnApplicationQuit()

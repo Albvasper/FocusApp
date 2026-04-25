@@ -9,7 +9,7 @@ public class RewardManager : MonoBehaviour
     [SerializeField] private RewardManagerUI rewardManagerUI;
 
     private LeafManager leafManager;
-    public int lastDate = 0;
+    private int lastDate;
 
     private void Awake() 
     {
@@ -33,5 +33,6 @@ public class RewardManager : MonoBehaviour
     {
         lastDate = System.DateTime.Now.Day;
         leafManager.AddLeafs(DailyRewardAmount);
+        SaveManager.Instance.SaveLastCheckIn(lastDate);
     }
 }

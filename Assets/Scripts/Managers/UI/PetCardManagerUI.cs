@@ -6,11 +6,15 @@ using UnityEngine.UI;
 /// Updates pet card UI with accurate information.
 /// </summary>
 public class PetCardManagerUI : MonoBehaviour
-{
+{   
+    [Header("Pet Profile Pictures")]
+    [SerializeField] private Sprite bearSprite;
+    [SerializeField] private Sprite sharkSprite;
+    [SerializeField] private Sprite frogSprite;
+
     [Header("HUD Components")]
     [SerializeField] private GameObject petCard;
     [SerializeField] private TextMeshProUGUI petNameText;
-    [SerializeField] private TextMeshProUGUI deadPetNameText;
     [SerializeField] private Image petProfilePicture;
 
     [Header("Pet bars")]
@@ -20,6 +24,11 @@ public class PetCardManagerUI : MonoBehaviour
     private void Start()
     {
         ClearLevelPellets();
+    }
+
+    public void SetName(string petName)
+    {
+        petNameText.text = petName;
     }
 
     public void ShowPetCard()
@@ -53,14 +62,19 @@ public class PetCardManagerUI : MonoBehaviour
         }
     }
 
-    public void AssignProfilePicture(Sprite petSprite)
-    {
-        petProfilePicture.sprite = petSprite;
-    }
-
-    private void SetName(string petName)
-    {
-        petNameText.text = petName;
-        deadPetNameText.text = petName + " has died!";
+    public void AssignProfilePicture(PetType petType)
+    {   
+        switch (petType)
+        {
+            case PetType.Bear:
+                petProfilePicture.sprite = bearSprite;
+            break;
+            case PetType.Shark:
+                petProfilePicture.sprite = sharkSprite;
+            break;
+            case PetType.Frog:
+                petProfilePicture.sprite = frogSprite;
+            break;
+        }
     }
 }

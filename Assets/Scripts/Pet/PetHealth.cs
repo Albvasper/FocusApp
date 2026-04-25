@@ -8,10 +8,7 @@ public class PetHealth : MonoBehaviour
 {
     public int health;
 
-    [SerializeField] private GameObject halo;
-    [SerializeField] private GameObject wings;
-
-    private int maxHealth = PetData.MaxHealth;
+    private int maxHealth = 100;
     private PetCardManagerUI petCardManagerUI;
     private TimeManager timeManager;
     private PetBehavior behavior;
@@ -21,14 +18,6 @@ public class PetHealth : MonoBehaviour
         behavior = GetComponent<PetBehavior>();
     }
 
-    private void Start()
-    {
-        halo.SetActive(false);
-        wings.SetActive(false);
-
-        if (health <= 0) Die();
-    }
-    
     public void Initialize(PetCardManagerUI petCardManagerUI, TimeManager timeManager)
     {
         this.petCardManagerUI = petCardManagerUI;
@@ -46,7 +35,7 @@ public class PetHealth : MonoBehaviour
         if (health < maxHealth)
         {
             health++;
-            PetDataManager.Instance.SaveHealth(health);
+            //TODO: Save health
             petCardManagerUI.UpdateHealthBar(health, maxHealth);
         }
     }
@@ -54,28 +43,12 @@ public class PetHealth : MonoBehaviour
     public void TakeDamage()
     {
         health--;
-        PetDataManager.Instance.SaveHealth(health);
+        //TODO: Save health
         petCardManagerUI.UpdateHealthBar(health, maxHealth);
         if (health <= 0)
         {
-            Die();
+            //Die();
         }
-    }
-
-    public void Die()
-    {
-        behavior.CanMove = false;
-        timeManager.CancelFocusSession();
-        //petCardManagerUI.HideUI();
-        PlaceWingsAndHalo();
-        StartCoroutine(DeathAnimation());
-        AudioManager.Instance.PlayHeavenlyChoir();
-    }
-
-    private void PlaceWingsAndHalo()
-    {
-        halo.SetActive(true);
-        wings.SetActive(true);
     }
 
     private IEnumerator DeathAnimation()

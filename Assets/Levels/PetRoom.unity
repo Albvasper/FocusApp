@@ -4934,9 +4934,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9a7208416015f14eadf095f30c1a4b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SaveManager
-  bearPetPrefab: {fileID: 0}
-  sharkPetPrefab: {fileID: 0}
-  frogPetPrefab: {fileID: 0}
+  bearPetPrefab: {fileID: 2366472102063391354, guid: eefaab64f1fa4ce4ea400a056da77d6e, type: 3}
+  sharkPetPrefab: {fileID: 2366472102063391354, guid: cccee7b09020fb240a95afdca8106dd4, type: 3}
+  frogPetPrefab: {fileID: 2366472102063391354, guid: 362c88d29c1adca49bb9b048c6ea0852, type: 3}
+  petSpawnPoint: {fileID: 1904213042}
+  availablePositionsParent: {fileID: 1454519044}
+  petCardManagerUI: {fileID: 1019321523}
 --- !u!1 &586383899
 GameObject:
   m_ObjectHideFlags: 0
@@ -8831,9 +8834,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f5d0306b3f09914793d5ad3f190cc81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PetCardManagerUI
+  bearSprite: {fileID: 2063988466907017193, guid: 4896d1fb3a6bd194ead2c21c115f8072, type: 3}
+  sharkSprite: {fileID: 4733775716228321093, guid: 5664e52a198909f47a4aac241bafe935, type: 3}
+  frogSprite: {fileID: 1005708305070828472, guid: a2e9d51f894688d43961a0ccaf11ee89, type: 3}
   petCard: {fileID: 1098882385}
   petNameText: {fileID: 1704253280}
-  deadPetNameText: {fileID: 1715743901}
   petProfilePicture: {fileID: 1559928938}
   healthBar: {fileID: 722600798}
   levelPellets:
