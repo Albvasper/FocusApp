@@ -15,8 +15,13 @@ public class RewardManager : MonoBehaviour
     {
         leafManager = GetComponent<LeafManager>();    
     }
-
-    private void Start() 
+    
+    public void SetLastDateCheckIn(int date)
+    {
+        lastDate = date;
+    }
+    
+    public void CheckForDailyReward() 
     {
         if (lastDate != System.DateTime.Now.Day)
         {

@@ -19,7 +19,6 @@ public class PetCardManagerUI : MonoBehaviour
     
     private void Start()
     {
-        SetName(PetDataManager.Instance.Data.PetName);
         ClearLevelPellets();
     }
 

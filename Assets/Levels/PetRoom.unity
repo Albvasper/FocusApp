@@ -2826,9 +2826,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 574985125}
-        m_TargetAssemblyTypeName: RewardManager, Assembly-CSharp
-        m_MethodName: GetReward
+      - m_Target: {fileID: 574985121}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlayClickSFX
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4802,7 +4802,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 574985118}
-  - component: {fileID: 574985120}
+  - component: {fileID: 574985126}
   - component: {fileID: 574985117}
   - component: {fileID: 574985122}
   - component: {fileID: 574985123}
@@ -4846,25 +4846,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &574985120
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 574985116}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eea62f131ee3f124095c49fab1f2cbff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Data: {fileID: 11400000, guid: eac467f327bb80d48a7211456c429234, type: 2}
-  spawnPoint: {fileID: 1904213042}
-  bearPetPrefab: {fileID: 2366472102063391354, guid: eefaab64f1fa4ce4ea400a056da77d6e, type: 3}
-  frogPetPrefab: {fileID: 2366472102063391354, guid: 362c88d29c1adca49bb9b048c6ea0852, type: 3}
-  sharkPetPrefab: {fileID: 2366472102063391354, guid: cccee7b09020fb240a95afdca8106dd4, type: 3}
-  petCardManagerUI: {fileID: 1019321523}
-  availablePositionsParent: {fileID: 1454519044}
 --- !u!114 &574985121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4940,7 +4921,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RewardManager
   DailyRewardAmount: 15
   rewardManagerUI: {fileID: 1019321528}
-  lastDate: 20
+  lastDate: 0
+--- !u!114 &574985126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 574985116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9a7208416015f14eadf095f30c1a4b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SaveManager
+  bearPetPrefab: {fileID: 0}
+  sharkPetPrefab: {fileID: 0}
+  frogPetPrefab: {fileID: 0}
 --- !u!1 &586383899
 GameObject:
   m_ObjectHideFlags: 0

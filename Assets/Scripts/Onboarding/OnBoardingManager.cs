@@ -1,4 +1,5 @@
 using TMPro;
+using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,40 +11,31 @@ public enum PetType
 }
 
 /// <summary>
-/// Saves pet data at onboarding process.
+/// Creates pet data at onboarding process.
 /// </summary>
 public class OnBoardingManager : MonoBehaviour
 {
-    [Header("Components")]
-    [SerializeField] private PetData data;
+    private string saveLocation;
 
-    private OnboardingManagerUI onboardingManagerUI;
-
-    private void Awake()
+    private void Start() 
     {
-        onboardingManagerUI = GetComponent<OnboardingManagerUI>();
-        PetDataSaveSystem.Load(data);
-    }
+        saveLocation = Path.Combine(Application.persistentDataPath, "saveData.json");
+    }   
 
-    public void SavePetName(TMP_InputField name)
+    public void CreateData(PetType petTypePicked, TMP_InputField petNamePicked)
     {
-        data.PetName = name.text;
-        PetDataSaveSystem.Save(data);
+        GameData data = new()
+        {
+            Type = petTypePicked,
+            PetName = petNamePicked.text,
+            CurrentLeafs = 0,
+            lastDateCheckIn = System.DateTime.Now.Day
+        };
+        File.WriteAllText(saveLocation, JsonUtility.ToJson(data));
     }
 
     public void GoToRoomLevel()
     {
         SceneManager.LoadScene("PetRoom");
-    }
-
-    public void GenerateNewPet(PetType petTypePicked)
-    {
-        data.PetAssinged = true;
-        data.Type = petTypePicked;
-        data.CurrentLifeStage = 1;
-        data.CurrentHealth = PetData.MaxHealth;
-        data.CurrentAge = 0;
-        
-        PetDataSaveSystem.Save(data);
     }
 }

@@ -1,25 +1,33 @@
 using UnityEngine;
+using System.IO;
 using UnityEngine.SceneManagement;
 
 /// <summary>
 /// When the user opens the app it will check if a pet was assigned or not.
 /// </summary>
 public class CheckPetAssigned : MonoBehaviour
-{
-    [SerializeField] private PetData data;
-
-    private void Awake()
-    {
-        PetDataSaveSystem.Load(data);
-    }
+{   
+    private string saveLocation;
 
     private void Start()
     {
         Application.targetFrameRate = 60;
-        
-        if (data.PetAssinged)
+
+        saveLocation = Path.Combine(Application.persistentDataPath, "saveData.json");
+        LoadData();
+    }
+
+    private void LoadData()
+    {
+        if (File.Exists(saveLocation))
+        {
+            Debug.Log("Data DOES exists");
             SceneManager.LoadScene("PetRoom");
+        }
         else
+        {
+            Debug.Log("Data DOESNT exist");
             SceneManager.LoadScene("Onboarding");
+        }
     }
 }

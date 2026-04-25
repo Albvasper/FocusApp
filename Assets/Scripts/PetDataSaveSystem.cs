@@ -57,11 +57,4 @@ public static class PetDataSaveSystem
             Save(petData);
         }
     }
-
-
-    public static void DeleteSave()
-    {
-        if (File.Exists(SavePath))
-            File.Delete(SavePath);
-    }
 }

@@ -68,8 +68,7 @@ public class OnboardingManagerUI : MonoBehaviour
 
     public void SetPetData(TMP_InputField input)
     {
-        onboardingManager.SavePetName(input);
-        onboardingManager.GenerateNewPet(petTypePicked);
+        onboardingManager.CreateData(petTypePicked, input);
         onboardingManager.GoToRoomLevel();
     }
 

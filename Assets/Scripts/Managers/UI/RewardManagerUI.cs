@@ -10,7 +10,6 @@ public class RewardManagerUI : MonoBehaviour
     private void Start() 
     {
         SetLeafRewardText();
-        HideDailyRewardScreen();
     } 
     
     public void ShowDailyRewardScreen()
