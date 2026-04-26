@@ -12,11 +12,17 @@ public class TimeManager : MonoBehaviour
 
     [SerializeField] private ScreenManagerUI screenManagerUI;
     [SerializeField] private TimerManagerUI timerManagerUI;
+    [SerializeField] private JournalManagerUI journalManagerUI;
     
     private float timeRemaining;
     private PetBehavior petBehavior;
     private LeafManager leafManager;
     
+    private void Awake() 
+    {
+        leafManager = GetComponent<LeafManager>();
+    }
+
     public void Initialize(PetBehavior petBehavior)
     {
         this.petBehavior = petBehavior;
@@ -69,6 +75,8 @@ public class TimeManager : MonoBehaviour
         isFocused = true;
         StopAllCoroutines();
         StartCoroutine(Timer());
+
+        journalManagerUI.SetSessionTime(timeGoal);
     }
 
     public void CancelFocusSession()
@@ -104,6 +112,7 @@ public class TimeManager : MonoBehaviour
         }
         GiveRewards(rewardAmount);
         screenManagerUI.ShowSucessScreen();
+        timerManagerUI.HideFocusScreen();
     }
 
     private void GiveRewards(int amount)
@@ -111,5 +120,6 @@ public class TimeManager : MonoBehaviour
         isFocused = false;
         leafManager.AddLeafs(amount);
         petBehavior.SetState(State.IDLE);
+        journalManagerUI.CreateSessionInJournal();
     }
 }
