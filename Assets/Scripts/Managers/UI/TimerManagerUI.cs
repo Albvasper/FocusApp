@@ -84,7 +84,10 @@ public class TimerManagerUI : MonoBehaviour
     
     public void HideFocusScreen()
     {
-        timerScreen.SetActive(false);    
+        timerScreen.SetActive(false);
+        // Reset timer
+        timerText.text = "05:00";
+        timeSlider.value = 0;
     }
 
     // When timer is initiated move timer and cancel button down
