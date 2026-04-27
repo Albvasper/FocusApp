@@ -1,7 +1,9 @@
+using System;
 using System.IO;
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using UnityEditor;
 
 //TODO: Separate load logic from save manager
 /// <summary>
@@ -20,6 +22,7 @@ public class SaveManager : MonoBehaviour
     [SerializeField] private GameObject availablePositionsParent;
     [Header("UI Managers")]
     [SerializeField] private PetCardManagerUI petCardManagerUI;
+    [SerializeField] private JournalManagerUI journalManagerUI;
     [Header("Decoration Prefabs")]
     [SerializeField] private List<DecorativeItem> decorativeItems = new();
 
@@ -94,6 +97,12 @@ public class SaveManager : MonoBehaviour
         });
         File.WriteAllText(saveLocation, JsonUtility.ToJson(data));
     }
+    
+    public void SaveFocusSession(string session)
+    {
+        data.Sessions.Add(session);
+        File.WriteAllText(saveLocation, JsonUtility.ToJson(data));
+    }
 
     public void DeleteSave()
     {
@@ -110,12 +119,12 @@ public class SaveManager : MonoBehaviour
         rewardManager.CheckForDailyReward();
         SpawnPet(data.Type);
         LoadDecorations();
+        LoadFocusSessions();
     }
 
     // Instantiate pet GO and get components from it
     private void SpawnPet(PetType petType)
     {
-
         switch (petType)
         {
             case PetType.Bear:
@@ -165,6 +174,44 @@ public class SaveManager : MonoBehaviour
                 Instantiate(item.item, new Vector3(decorationData.X, decorationData.Y, 0f), Quaternion.identity);
             decorationObject = decorationObjectGO.GetComponent<DecorationObject>();
             decorationObject.Initialize(editModeManager);
+        }
+    }
+
+    private void LoadFocusSessions()
+    {
+        foreach (string session in data.Sessions)
+        {
+            string[] slashParts = session.Split('/');
+            int month = int.Parse(slashParts[0]);
+            int day = int.Parse(slashParts[1].Split(' ')[0]);
+
+            if (month == DateTime.Now.Month)
+            {
+                if (day == DateTime.Now.Day)
+                {
+                    // Load it in today session
+                    journalManagerUI.RenewTodaySession(session);
+                } 
+                else
+                {
+                    DateTime sessionDate = new(DateTime.Today.Year, month, day);
+                    int daysSinceMonday = ((int)DateTime.Today.DayOfWeek - (int)DayOfWeek.Monday + 7) % 7;
+                    DateTime weekStart = DateTime.Today.AddDays(-daysSinceMonday);
+                    DateTime weekEnd = weekStart.AddDays(7);
+                    
+                    if (sessionDate >= weekStart && sessionDate < weekEnd)
+                        // Load it in this week session
+                        journalManagerUI.RenewWeekSession(session);
+                    else
+                        // Load it in this month session
+                        journalManagerUI.RenewMonthSession(session);
+                }
+            }
+            else
+            {
+                // Delete session
+                Debug.Log("Delete session, its not from this month.");
+            }
         }
     }
 }

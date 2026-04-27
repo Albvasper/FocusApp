@@ -30,8 +30,8 @@ public class OnBoardingManager : MonoBehaviour
             PetName = petNamePicked.text,
             CurrentLeafs = 0,
             LastDateCheckIn = System.DateTime.Now.Day,
-            Decorations = new()
-            
+            Decorations = new(),
+            Sessions = new()
         };
         File.WriteAllText(saveLocation, JsonUtility.ToJson(data));
     }

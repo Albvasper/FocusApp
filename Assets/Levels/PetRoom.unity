@@ -4959,6 +4959,7 @@ MonoBehaviour:
   petSpawnPoint: {fileID: 1904213042}
   availablePositionsParent: {fileID: 1454519044}
   petCardManagerUI: {fileID: 1019321523}
+  journalManagerUI: {fileID: 1019321529}
   decorativeItems:
   - {fileID: 11400000, guid: 684e517dbc51b7d46972d0b738103606, type: 2}
   - {fileID: 11400000, guid: 21f42c36ccce5f8469ae65bcdc55ce91, type: 2}

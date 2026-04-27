@@ -26,38 +26,63 @@ public class JournalManagerUI : MonoBehaviour
     public void CreateSessionInJournal()
     {
         todayUnavailableSessionsText.SetActive(false);
-        sessionText.text = 
-            System.DateTime.Now.Day.ToString() + 
-            "/" +
+        string session = 
             System.DateTime.Now.Month.ToString() + 
+            "/" +
+            System.DateTime.Now.Day.ToString() + 
             " session: " + 
             GiveSessionTimeFormat(sessionTime) +
             " minutes.";
+        sessionText.text = session;
         Instantiate(sessionText, todaySessionParent);
         LayoutRebuilder.ForceRebuildLayoutImmediate(rootRectTransform);
-        //TODO: Save 
+        SaveManager.Instance.SaveFocusSession(session);
+    }
+
+    public void RenewTodaySession(string session)
+    {
+        todayUnavailableSessionsText.SetActive(false);
+        sessionText.text = session;
+        Instantiate(sessionText, todaySessionParent);
+        LayoutRebuilder.ForceRebuildLayoutImmediate(rootRectTransform);
+    }
+
+    public void RenewWeekSession(string session)
+    {
+        weeklyUnavailableSessionsText.SetActive(false);
+        sessionText.text = session;
+        Instantiate(sessionText, weeklySessionParent);
+        LayoutRebuilder.ForceRebuildLayoutImmediate(rootRectTransform);
+    }
+
+    public void RenewMonthSession(string session)
+    {
+        monthlyUnavailableSessionsText.SetActive(false);
+        sessionText.text = session;
+        Instantiate(sessionText, monthlySessionParent);
+        LayoutRebuilder.ForceRebuildLayoutImmediate(rootRectTransform);
     }
 
     private string GiveSessionTimeFormat(float time)
     {
-        float minutes = Mathf.FloorToInt(time / 60); 
-        float seconds = Mathf.FloorToInt(time % 60);
-        return string.Format("{0:00}:{1:00}", minutes, seconds);
+        float minutes = time / 60f;
+        return minutes.ToString();
     }
 
     [ContextMenu("Trigger new session creation")]
     public void ManualCreateSession()
     {
         todayUnavailableSessionsText.SetActive(false);
-
-        sessionText.text = 
-            System.DateTime.Now.Day.ToString() + 
+        string session = 
+            "4" + 
             "/" +
-            System.DateTime.Now.Month.ToString() + 
+            System.DateTime.Now.Day.ToString() + 
             " session: " + 
-            "05:00" +
+            "5" +
             " minutes.";
+        sessionText.text = session;
         Instantiate(sessionText, todaySessionParent);
         LayoutRebuilder.ForceRebuildLayoutImmediate(rootRectTransform);
+        SaveManager.Instance.SaveFocusSession(session);
     }
 }

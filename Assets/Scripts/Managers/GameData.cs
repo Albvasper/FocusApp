@@ -6,9 +6,9 @@ public class GameData
     public PetType Type;
     public string PetName;
     public int CurrentLeafs;
-    // TODO: Journal sessions
     public int LastDateCheckIn;
     public List<DecorationData> Decorations;
+    public List<string> Sessions;
 }
 
 [System.Serializable]
