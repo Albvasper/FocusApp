@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEditor.Animations;
 
 /// <summary>
 /// Swaps UI screens.
@@ -10,6 +12,20 @@ public class ScreenManagerUI : MonoBehaviour
     [SerializeField] private GameObject successScreen;
     [SerializeField] private GameObject failureScreen;
     [SerializeField] private GameObject editModeScreen;
+
+    [Header("UI Components")]
+    [SerializeField] private Animator sadPetAnimator;
+    [SerializeField] private Animator happyPetAnimator;
+
+    [Header("Bear Animation Clips")]
+    [SerializeField] private AnimatorController bearHappyController;
+    [SerializeField] private AnimatorController bearSadController;
+    [Header("Frog Animation Clips")]
+    [SerializeField] private AnimatorController frogHappyController;
+    [SerializeField] private AnimatorController frogSadController;
+    [Header("Shark Animation Clips")]
+    [SerializeField] private AnimatorController sharkHappyController;
+    [SerializeField] private AnimatorController sharkSadController;
 
     private void Start()
     {
@@ -52,5 +68,24 @@ public class ScreenManagerUI : MonoBehaviour
     public void HideEditModeScreen()
     {
         editModeScreen.SetActive(false);
+    }
+
+    public void SetPetType(PetType type)
+    {
+        switch (type)
+        {
+            case PetType.Bear:
+                sadPetAnimator.runtimeAnimatorController = bearSadController;
+                happyPetAnimator.runtimeAnimatorController = bearHappyController;
+            break;
+            case PetType.Shark:
+                sadPetAnimator.runtimeAnimatorController = sharkSadController;
+                happyPetAnimator.runtimeAnimatorController = sharkHappyController;
+            break;
+            case PetType.Frog:
+                sadPetAnimator.runtimeAnimatorController = frogSadController;
+                happyPetAnimator.runtimeAnimatorController = frogHappyController;
+            break;
+        }
     }
 }

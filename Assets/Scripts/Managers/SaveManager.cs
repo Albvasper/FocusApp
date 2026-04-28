@@ -23,6 +23,7 @@ public class SaveManager : MonoBehaviour
     [Header("UI Managers")]
     [SerializeField] private PetCardManagerUI petCardManagerUI;
     [SerializeField] private JournalManagerUI journalManagerUI;
+    [SerializeField] private ScreenManagerUI screenManagerUI;
     [Header("Decoration Prefabs")]
     [SerializeField] private List<DecorativeItem> decorativeItems = new();
 
@@ -114,6 +115,7 @@ public class SaveManager : MonoBehaviour
     private void ApplyData()
     {
         petCardManagerUI.SetName(data.PetName);
+        screenManagerUI.SetPetType(data.Type);
         leafManager.SetLeafs(data.CurrentLeafs);
         rewardManager.SetLastDateCheckIn(data.LastDateCheckIn);
         rewardManager.CheckForDailyReward();

@@ -4960,6 +4960,7 @@ MonoBehaviour:
   availablePositionsParent: {fileID: 1454519044}
   petCardManagerUI: {fileID: 1019321523}
   journalManagerUI: {fileID: 1019321529}
+  screenManagerUI: {fileID: 1019321525}
   decorativeItems:
   - {fileID: 11400000, guid: 684e517dbc51b7d46972d0b738103606, type: 2}
   - {fileID: 11400000, guid: 21f42c36ccce5f8469ae65bcdc55ce91, type: 2}
@@ -5013,7 +5014,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 540}
   m_SizeDelta: {x: 871.0133, y: 296.6295}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &586383901
@@ -8468,6 +8469,7 @@ RectTransform:
   m_Children:
   - {fileID: 1647271587}
   - {fileID: 586383900}
+  - {fileID: 1727316737}
   - {fileID: 1217012053}
   m_Father: {fileID: 116278224}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9080,6 +9082,14 @@ MonoBehaviour:
   successScreen: {fileID: 983739005}
   failureScreen: {fileID: 1841365675}
   editModeScreen: {fileID: 726008514}
+  sadPetAnimator: {fileID: 1656866124}
+  happyPetAnimator: {fileID: 1727316741}
+  bearHappyController: {fileID: 9100000, guid: ff6af175e5462c747ac523a7aa862d90, type: 2}
+  bearSadController: {fileID: 9100000, guid: 563a963c18a039241bff78cb99413aee, type: 2}
+  frogHappyController: {fileID: 9100000, guid: d724640ddf7f8664aaa81401c8527b2e, type: 2}
+  frogSadController: {fileID: 9100000, guid: c0288c0e62b0a9d4d9dda8a00242ea1c, type: 2}
+  sharkHappyController: {fileID: 9100000, guid: 6bc5fe8aee99a8048aa5ef84580712cf, type: 2}
+  sharkSadController: {fileID: 9100000, guid: 7b5453770ca05b14597a6e5388b5aadf, type: 2}
 --- !u!114 &1019321526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12184,7 +12194,9 @@ MonoBehaviour:
   useAmazon: 0
   autoSyncPurchases: 1
   appUserID: 
-  productIdentifiers: []
+  productIdentifiers:
+  - 'com.pome.pomeplus.monthly '
+  - 'com.pome.pomeplus.yearly  '
   listener: {fileID: 0}
   userDefaultsSuiteName: 
   purchasesAreCompletedBy: 0
@@ -15656,6 +15668,7 @@ GameObject:
   - component: {fileID: 1656866121}
   - component: {fileID: 1656866123}
   - component: {fileID: 1656866122}
+  - component: {fileID: 1656866124}
   m_Layer: 5
   m_Name: PetImage
   m_TagString: Untagged
@@ -15680,7 +15693,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 647.389, y: 647.389}
+  m_SizeDelta: {x: 450.60507, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1656866122
 MonoBehaviour:
@@ -15720,6 +15733,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1656866120}
   m_CullTransparentMesh: 1
+--- !u!95 &1656866124
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1656866120}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7b5453770ca05b14597a6e5388b5aadf, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1679000086
 GameObject:
   m_ObjectHideFlags: 0
@@ -16291,6 +16326,104 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1724478935}
   m_CullTransparentMesh: 1
+--- !u!1 &1727316736
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1727316737}
+  - component: {fileID: 1727316740}
+  - component: {fileID: 1727316739}
+  - component: {fileID: 1727316741}
+  m_Layer: 5
+  m_Name: PetImage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1727316737
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727316736}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 983739006}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -0.00012207031}
+  m_SizeDelta: {x: 450.60507, y: 600}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1727316739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727316736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1727316740
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727316736}
+  m_CullTransparentMesh: 1
+--- !u!95 &1727316741
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727316736}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ff6af175e5462c747ac523a7aa862d90, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1747932217
 GameObject:
   m_ObjectHideFlags: 0
