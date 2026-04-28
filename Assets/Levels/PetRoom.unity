@@ -1071,7 +1071,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You failed :(
+  m_text: 'You got distracted.
+
+    You''ll get it next time.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 07dd6c4411742c74a9d9e5e815664803, type: 2}
   m_sharedMaterial: {fileID: 3330529441997755001, guid: 07dd6c4411742c74a9d9e5e815664803, type: 2}
@@ -3107,7 +3109,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &360645086
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4961,6 +4963,7 @@ MonoBehaviour:
   petCardManagerUI: {fileID: 1019321523}
   journalManagerUI: {fileID: 1019321529}
   screenManagerUI: {fileID: 1019321525}
+  timerManagerUI: {fileID: 1019321524}
   decorativeItems:
   - {fileID: 11400000, guid: 684e517dbc51b7d46972d0b738103606, type: 2}
   - {fileID: 11400000, guid: 21f42c36ccce5f8469ae65bcdc55ce91, type: 2}
@@ -5037,7 +5040,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You did it, great job!
+  m_text: 'You did it,
+
+    awesome job!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 07dd6c4411742c74a9d9e5e815664803, type: 2}
   m_sharedMaterial: {fileID: 3330529441997755001, guid: 07dd6c4411742c74a9d9e5e815664803, type: 2}

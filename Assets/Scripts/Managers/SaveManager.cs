@@ -24,6 +24,7 @@ public class SaveManager : MonoBehaviour
     [SerializeField] private PetCardManagerUI petCardManagerUI;
     [SerializeField] private JournalManagerUI journalManagerUI;
     [SerializeField] private ScreenManagerUI screenManagerUI;
+    [SerializeField] private TimerManagerUI timerManagerUI;
     [Header("Decoration Prefabs")]
     [SerializeField] private List<DecorativeItem> decorativeItems = new();
 
@@ -36,6 +37,7 @@ public class SaveManager : MonoBehaviour
     private GameObject pet;
     private PetBehavior petBehavior;
     private PetHealth petHealth;
+    private PetTouch petTouch;
     
     private void Awake()
     {
@@ -147,6 +149,7 @@ public class SaveManager : MonoBehaviour
     
         petHealth = pet.GetComponent<PetHealth>();
         petBehavior = pet.GetComponent<PetBehavior>();
+        petTouch = pet.GetComponent<PetTouch>();
         InitializePetComponents();
     }
 
@@ -159,6 +162,7 @@ public class SaveManager : MonoBehaviour
         petHealth.Initialize(petCardManagerUI, timeManager);
         timeManager.Initialize(petBehavior);
         petBehavior.Initialize(availablePositionsParent);
+        petTouch.Initialize(timerManagerUI);
         editModeManager.Initialize(pet);
     }
     
