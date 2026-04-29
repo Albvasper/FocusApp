@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class EditModeManager : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class EditModeManager : MonoBehaviour
     */
 
     public bool EditingEnabled { get ; private set; } = false;
+    public List<DecorationObject> Decorations {get; private set; } = new();
 
     [SerializeField] private Color standardBGColor;
     [SerializeField] private Color editModeBGColor;
@@ -46,6 +48,7 @@ public class EditModeManager : MonoBehaviour
         pet.SetActive(true);
         EditingEnabled = false;
         mainCamera.backgroundColor = standardBGColor;
+        SaveManager.Instance.SaveDecorationChanges();
     }
 
     public void DeployItem(DecorativeItem decoration)
@@ -54,6 +57,7 @@ public class EditModeManager : MonoBehaviour
         GameObject decorationObjectGO = Instantiate(decoration.item, Vector3.zero, Quaternion.identity);
         
         decorationObject = decorationObjectGO.GetComponent<DecorationObject>();
+        Decorations.Add(decorationObject);
         decorationObject.Initialize(this);
         SaveManager.Instance.SaveDecoration(decorationObject);
     }

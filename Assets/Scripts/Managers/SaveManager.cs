@@ -101,6 +101,18 @@ public class SaveManager : MonoBehaviour
         File.WriteAllText(saveLocation, JsonUtility.ToJson(data));
     }
     
+    public void SaveDecorationChanges()
+    {
+        // Clear all decorations data
+        data.Decorations = new List<DecorationData>();
+        File.WriteAllText(saveLocation, JsonUtility.ToJson(data));
+        // Create new ones
+        foreach(DecorationObject updatedDecoration in editModeManager.Decorations)
+        {
+            SaveDecoration(updatedDecoration);
+        }
+    }
+
     public void SaveFocusSession(string session)
     {
         data.Sessions.Add(session);
@@ -176,10 +188,15 @@ public class SaveManager : MonoBehaviour
                 continue;
 
             DecorationObject decorationObject;
+            // Spawn decoration
             GameObject decorationObjectGO = 
                 Instantiate(item.item, new Vector3(decorationData.X, decorationData.Y, 0f), Quaternion.identity);
             decorationObject = decorationObjectGO.GetComponent<DecorationObject>();
+            // Initialize
             decorationObject.Initialize(editModeManager);
+            // Check if sprite flipped
+            if (decorationData.Flipped)
+                decorationObject.SpriteRenderer.flipX = true;
         }
     }
 

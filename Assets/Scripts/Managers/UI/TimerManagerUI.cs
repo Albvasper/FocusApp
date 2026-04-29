@@ -95,7 +95,7 @@ public class TimerManagerUI : MonoBehaviour
     {
         float elapsed = 0f;
         const float Duration = 1f;
-        Vector3 targetPosition = new(0f, -417f, 0f);
+        Vector3 targetPosition = new(0f, -407.4f, 0f);
 
         while (elapsed < Duration)
         {
