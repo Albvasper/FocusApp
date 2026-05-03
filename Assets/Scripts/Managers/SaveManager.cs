@@ -197,6 +197,8 @@ public class SaveManager : MonoBehaviour
             // Check if sprite flipped
             if (decorationData.Flipped)
                 decorationObject.SpriteRenderer.flipX = true;
+            // Update spawned decoration list
+            editModeManager.Decorations.Add(decorationObject);
         }
     }
 

@@ -3,8 +3,7 @@ using UnityEngine.UI;
 
 public class PricingManagerUI : MonoBehaviour
 {   
-    public bool SubscribedToPomePlus; //{ get; private set; }
-    
+    [SerializeField] private PricingManager pricingManager;
     [SerializeField] private GameObject pricingScreen;
     [SerializeField] private Toggle monthlyPlanToggle;
     [SerializeField] private Toggle annuallyPlanToggle;
@@ -13,7 +12,6 @@ public class PricingManagerUI : MonoBehaviour
 
     public void Start()
     {
-        SubscribedToPomePlus = false;
         HidePricingScreen();
         SelectMonthlyPlan();
     }
@@ -46,7 +44,7 @@ public class PricingManagerUI : MonoBehaviour
     {
         //TODO: Subscription
         HidePricingScreen();
-        SubscribedToPomePlus = true;
+        pricingManager.SubscribeToPomePlus();
     }
 
     public void Cancel()

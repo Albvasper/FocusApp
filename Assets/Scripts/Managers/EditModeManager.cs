@@ -18,7 +18,7 @@ public class EditModeManager : MonoBehaviour
     */
 
     public bool EditingEnabled { get ; private set; } = false;
-    public List<DecorationObject> Decorations {get; private set; } = new();
+    public List<DecorationObject> Decorations = new();
 
     [SerializeField] private Color standardBGColor;
     [SerializeField] private Color editModeBGColor;
