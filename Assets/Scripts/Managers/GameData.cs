@@ -18,4 +18,5 @@ public class DecorationData
     public float X;
     public float Y;
     public bool Flipped;
+    public int SortingLayer;
 }

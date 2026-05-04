@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 /// <summary>
 /// Controls deocration prop in the room.
@@ -9,6 +10,11 @@ public class DecorationObject : MonoBehaviour, IPointerDownHandler, IDragHandler
     public SpriteRenderer SpriteRenderer { get; private set; }
     public string ID;
     
+    [SerializeField] private Button frontLayerButton;
+    [SerializeField] private Button bgLayerButton;
+
+    private int propsForegroundLayer;
+    private int propBackGroundLayer;
     private Vector3 offset;
     private GameObject canvas;
     private EditModeManager editModeManager;
@@ -18,6 +24,8 @@ public class DecorationObject : MonoBehaviour, IPointerDownHandler, IDragHandler
     {
         mainCamera = Camera.main;
         SpriteRenderer = GetComponent<SpriteRenderer>();
+        propsForegroundLayer = SortingLayer.NameToID("PropsForeground");
+        propBackGroundLayer = SortingLayer.NameToID("PropsBackground");
         canvas = transform.GetChild(0).gameObject;
     }
 
@@ -85,5 +93,25 @@ public class DecorationObject : MonoBehaviour, IPointerDownHandler, IDragHandler
             SpriteRenderer.flipX = false;
         else
             SpriteRenderer.flipX = true;
+    }
+
+    /// <summary>
+    /// Apply prop foreground sorting layer to sprite renderer.
+    /// </summary>
+    public void BringToFrontLayer()
+    {
+        SpriteRenderer.sortingLayerID = propsForegroundLayer;
+        frontLayerButton.enabled = false;
+        bgLayerButton.enabled = true;
+    }
+
+    /// <summary>
+    /// Apply prop background sorting layer to sprite renderer.
+    /// </summary>
+    public void BringToBackgroundLayer()
+    {
+        SpriteRenderer.sortingLayerID = propBackGroundLayer;
+        frontLayerButton.enabled = true;
+        bgLayerButton.enabled = false;
     }
 }

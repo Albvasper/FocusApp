@@ -96,7 +96,8 @@ public class SaveManager : MonoBehaviour
             ID = decoration.ID,
             X = decoration.transform.position.x,
             Y = decoration.transform.position.y,
-            Flipped = decoration.SpriteRenderer.flipX
+            Flipped = decoration.SpriteRenderer.flipX,
+            SortingLayer = decoration.SpriteRenderer.sortingLayerID
         });
         File.WriteAllText(saveLocation, JsonUtility.ToJson(data));
     }
@@ -194,11 +195,12 @@ public class SaveManager : MonoBehaviour
             decorationObject = decorationObjectGO.GetComponent<DecorationObject>();
             // Initialize
             decorationObject.Initialize(editModeManager);
-            // Check if sprite flipped
-            if (decorationData.Flipped)
-                decorationObject.SpriteRenderer.flipX = true;
+            // Apply sprite flip
+            decorationObject.SpriteRenderer.flipX = decorationData.Flipped;
             // Update spawned decoration list
             editModeManager.Decorations.Add(decorationObject);
+            // Apply sorting layer
+            decorationObject.SpriteRenderer.sortingLayerID = decorationData.SortingLayer;
         }
     }
 

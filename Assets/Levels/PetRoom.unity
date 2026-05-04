@@ -5890,10 +5890,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Unlock more ways to personalize your experience and gain deeper insight
-    into your progress:\n\n\u2022 Access exclusive decorative items and skins\n\u2022
-    Discover detailed insights into your focus history\n\u2022 Unlock limited-time
-    seasonal content and special collections\n\u2022 Enjoy regular updates with new
-    customization options\n\u2022 Support ongoing development and new feature releases"
+    into your progress:\n\n\u2022 Access exclusive decorative items.\n\u2022 Discover
+    detailed insights into your focus history.\n\u2022 Unlock limited-time seasonal
+    content and special collections.\n\u2022 Enjoy regular updates with new customization
+    options.\n\u2022 Support ongoing development and new feature releases."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 07dd6c4411742c74a9d9e5e815664803, type: 2}
   m_sharedMaterial: {fileID: 3330529441997755001, guid: 07dd6c4411742c74a9d9e5e815664803, type: 2}
