@@ -4,10 +4,12 @@ public class PetAnimator : MonoBehaviour
 {
     private Animator animator;
     private bool focusingTaskAssigned = false;
+    private SpriteRenderer spriteRenderer;
 
     private void Awake() 
     {
-        animator = GetComponent<Animator>();    
+        animator = GetComponent<Animator>();  
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     public void IsWalking()
@@ -41,5 +43,14 @@ public class PetAnimator : MonoBehaviour
             case 2: animator.SetBool("IsSleeping", true); break;
         }
         focusingTaskAssigned = true;
+    }
+
+    /// <summary>
+    /// Flip sprite based on direction.
+    /// </summary>
+    public void CheckFlipSprite(Vector3 targetPosition)
+    {
+        Vector2 direction = targetPosition - transform.position;
+        spriteRenderer.flipX = direction.x > 0;
     }
 }

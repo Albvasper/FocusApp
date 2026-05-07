@@ -13,7 +13,7 @@ public class ShopManager : MonoBehaviour
     {
         leafManager = GetComponent<LeafManager>();    
         editModeManager = GetComponent<EditModeManager>(); 
-        pricingManager = GetComponent<PricingManager>(); 
+        pricingManager = FindFirstObjectByType<PricingManager>();
     }
 
     public void TryBuyingItem(DecorativeItem item)

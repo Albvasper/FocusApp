@@ -15,12 +15,15 @@ public class PetBehavior : MonoBehaviour
 
     public bool CanMove = true;
 
+    [SerializeField] private float speed = 1.5f;
+
     private State currentState = State.IDLE;
     private List<Vector3> availablePositions = new();
     private Vector3 targetPosition;
     private float cooldown = 0f;
     private float counter = 0f;
     private PetAnimator PetAnimator;
+    private Coroutine walkCoroutine;
 
     private void Awake() 
     {
@@ -38,7 +41,6 @@ public class PetBehavior : MonoBehaviour
         switch (currentState)
         {
             case State.IDLE: IDLEBehavior(); break;
-
             case State.Focusing: FocusingBehavior(); break;   
         }
     }
@@ -71,8 +73,9 @@ public class PetBehavior : MonoBehaviour
             {
                 targetPosition = availablePositions[Random.Range(0, availablePositions.Count-1)];
                 cooldown = Random.Range(MovementCooldownMin, MovementCooldownMax);
-                StopAllCoroutines();
-                StartCoroutine(Walk(targetPosition));
+                if (walkCoroutine != null) 
+                    StopCoroutine(walkCoroutine);
+                walkCoroutine = StartCoroutine(Walk(targetPosition));
                 counter = 0;
             }
         }
@@ -87,10 +90,13 @@ public class PetBehavior : MonoBehaviour
     private IEnumerator Walk(Vector3 targetPosition)
     {
         Vector3 startingPosition = transform.position;
-        float duration = 2;
+        float distance = Vector3.Distance(startingPosition, targetPosition);
+        float duration = distance / speed;
         float timeElapsed = 0;
 
-        while(timeElapsed < duration)
+        PetAnimator.CheckFlipSprite(targetPosition);
+
+        while (timeElapsed < duration)
         {
             PetAnimator.IsWalking();
             transform.position = Vector3.Lerp(startingPosition, targetPosition, timeElapsed / duration);
@@ -100,5 +106,4 @@ public class PetBehavior : MonoBehaviour
         transform.position = targetPosition;
         PetAnimator.IsIDLEing();
     }
-
 }
