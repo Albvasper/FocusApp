@@ -13959,7 +13959,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: revenuecat.purchases-unity::Purchases
   useRuntimeSetup: 1
-  revenueCatAPIKeyApple: test_AVKBWUjGQwphCQbHQSzbGrlozvU
+  revenueCatAPIKeyApple: appl_aCtIaSKoHIobKkEewimgEwLirUh
   revenueCatAPIKeyGoogle: 
   revenueCatAPIKeyAmazon: 
   useAmazon: 0
